@@ -615,9 +615,9 @@
   }
 
   .hero-avatar-wrap {
-    display: none;
+    display: block;
   }
-
+/* hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee */
   .about-grid {
     grid-template-columns: 1fr;
   }
@@ -638,6 +638,8 @@
 
   .hero-stats {
     gap: var(--space-xl);
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
   }
 

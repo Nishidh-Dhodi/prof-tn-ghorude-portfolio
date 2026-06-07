@@ -9,6 +9,7 @@ import {
 } from '../../data/portfolioData';
 import Timeline from '../../components/Timeline/Timeline';
 import './HomePage.css';
+import ProfHasanPhudinawalaPhoto from "../../assets/ProfHasanPhudinawalaPhoto.png";
 
 /* ── Icon map for expertise skills ─────────────────────────────── */
 const ICON_MAP = {
@@ -86,7 +87,13 @@ export default function HomePage() {
             <div className="hero-avatar-wrap animate-fadeInUp animate-delay-2">
               <div className="hero-avatar-glow" />
               <div className="hero-avatar-ring">
-                <div className="hero-avatar-inner">HP</div>
+                <div className="hero-avatar-inner">
+                  <img
+                    src={ProfHasanPhudinawalaPhoto}
+                    alt="Prof. Hasan Phudinawala"
+                    className="hero-avatar"
+                  />
+                </div>
               </div>
               <div className="hero-badge-floating">
                 <div className="badge-icon">📚</div>
