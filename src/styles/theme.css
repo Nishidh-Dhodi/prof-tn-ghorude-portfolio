@@ -1,0 +1,115 @@
+/* ================================================================
+   THEME SYSTEM — Prof. Hasan Phudinawala Portfolio
+   Dark (default) + Light theme via html.light class toggle
+   ================================================================ */
+
+/* ── DARK THEME (default) ─────────────────────────────────────── */
+:root {
+  /* ── Surfaces ─────────────────────────────── */
+  --clr-bg:           #0b0f1a;
+  --clr-bg-2:         #0f1526;
+  --clr-bg-card:      #141d2e;
+  --clr-bg-card-2:    #192338;
+  --clr-bg-elevated:  #1e2a40;
+
+  /* ── Borders ──────────────────────────────── */
+  --clr-border:       rgba(255, 255, 255, 0.07);
+  --clr-border-hover: rgba(255, 255, 255, 0.16);
+
+  /* ── Accent Palette (shared both themes) ──── */
+  --clr-accent:       #5a9cf8;
+  --clr-accent-2:     #8b6dfd;
+  --clr-accent-glow:  rgba(90, 156, 248, 0.28);
+  --clr-gold:         #f0b429;
+  --clr-teal:         #00d4aa;
+
+  /* ── Text ─────────────────────────────────── */
+  --clr-text:         #dde4f0;
+  --clr-text-muted:   #7d8aa0;
+  --clr-text-faint:   #44536a;
+  --clr-white:        #ffffff;
+  --clr-heading:      #f0f4ff;
+
+  /* ── Gradients ────────────────────────────── */
+  --grad-primary:  linear-gradient(135deg, #5a9cf8 0%, #8b6dfd 100%);
+  --grad-hero:     linear-gradient(135deg, #0b0f1a 0%, #0f1d36 50%, #0b0e1d 100%);
+  --grad-card:     linear-gradient(145deg, #141d2e 0%, #0f1526 100%);
+  --grad-glow:     radial-gradient(ellipse at 50% 0%, rgba(90,156,248,0.13) 0%, transparent 70%);
+
+  /* ── Shadows ──────────────────────────────── */
+  --shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md:    0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-lg:    0 8px 32px rgba(0, 0, 0, 0.55);
+  --shadow-glow:  0 0 28px rgba(90, 156, 248, 0.28);
+  --shadow-card:  0 2px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  /* ── Navbar specific ──────────────────────── */
+  --navbar-bg:           rgba(11, 15, 26, 0.84);
+  --navbar-bg-scrolled:  rgba(11, 15, 26, 0.97);
+  --dropdown-bg:         #111a2e;
+  --submenu-bg:          #0d1526;
+  --drawer-bg:           #0f1526;
+
+  /* ── Footer ───────────────────────────────── */
+  --footer-bg: #080c16;
+
+  /* ── Timeline ─────────────────────────────── */
+  --timeline-line:        rgba(90, 156, 248, 0.25);
+  --timeline-node-bg:     #141d2e;
+  --timeline-node-border: rgba(90, 156, 248, 0.4);
+  --timeline-card-bg:     linear-gradient(145deg, #192338, #141d2e);
+}
+
+/* ── LIGHT THEME OVERRIDES ────────────────────────────────────── */
+html.light {
+  /* ── Surfaces ─────────────────────────────── */
+  --clr-bg:           #f4f6fb;
+  --clr-bg-2:         #eaecf5;
+  --clr-bg-card:      #ffffff;
+  --clr-bg-card-2:    #f0f2fa;
+  --clr-bg-elevated:  #e8ebf5;
+
+  /* ── Borders ──────────────────────────────── */
+  --clr-border:       rgba(0, 0, 0, 0.08);
+  --clr-border-hover: rgba(0, 0, 0, 0.16);
+
+  /* ── Accents stay same but glows soften ───── */
+  --clr-accent-glow:  rgba(90, 156, 248, 0.15);
+  --clr-gold:         #d49a0e;
+  --clr-teal:         #009e80;
+
+  /* ── Text ─────────────────────────────────── */
+  --clr-text:         #1c2640;
+  --clr-text-muted:   #4a5578;
+  --clr-text-faint:   #8896b0;
+  --clr-white:        #0d1526;
+  --clr-heading:      #111828;
+
+  /* ── Gradients ────────────────────────────── */
+  --grad-hero:     linear-gradient(135deg, #eaecf5 0%, #dde3f5 50%, #e8ecf8 100%);
+  --grad-card:     linear-gradient(145deg, #ffffff 0%, #f4f6fb 100%);
+  --grad-glow:     radial-gradient(ellipse at 50% 0%, rgba(90,156,248,0.08) 0%, transparent 70%);
+
+  /* ── Shadows (softer on light) ────────────── */
+  --shadow-sm:    0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md:    0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-lg:    0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-glow:  0 0 28px rgba(90, 156, 248, 0.18);
+  --shadow-card:  0 2px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  /* ── Navbar ───────────────────────────────── */
+  --navbar-bg:           rgba(244, 246, 251, 0.88);
+  --navbar-bg-scrolled:  rgba(244, 246, 251, 0.98);
+  --dropdown-bg:         #ffffff;
+  --submenu-bg:          #f4f6fb;
+  --drawer-bg:           #f4f6fb;
+
+  /* ── Footer ───────────────────────────────── */
+  --footer-bg: #e8ecf5;
+
+  /* ── Timeline ─────────────────────────────── */
+  --timeline-line:        rgba(90, 156, 248, 0.3);
+  --timeline-node-bg:     #ffffff;
+  --timeline-node-border: rgba(90, 156, 248, 0.5);
+  --timeline-card-bg:     linear-gradient(145deg, #ffffff, #f4f6fb);
+}

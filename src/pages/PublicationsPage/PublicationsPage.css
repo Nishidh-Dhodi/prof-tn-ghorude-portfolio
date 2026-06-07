@@ -1,0 +1,280 @@
+/* ================================================================
+   PUBLICATIONS PAGE CSS
+   ================================================================ */
+
+.publications-hero {
+  padding-top: calc(var(--navbar-h) + var(--space-4xl));
+  padding-bottom: var(--space-3xl);
+  background: var(--grad-hero);
+  position: relative;
+  overflow: hidden;
+}
+
+.publications-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--grad-glow);
+  pointer-events: none;
+}
+
+.publications-hero .container { position: relative; }
+
+.pub-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(79,142,247,0.1);
+  border: 1px solid rgba(79,142,247,0.2);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--clr-accent);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-lg);
+}
+
+.publications-hero h1 {
+  margin-bottom: var(--space-md);
+}
+
+.publications-hero p {
+  max-width: 600px;
+  font-size: 1rem;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.pub-counts {
+  display: flex;
+  gap: var(--space-2xl);
+}
+
+.pub-count-item {
+  text-align: left;
+}
+
+.pub-count-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pub-count-label {
+  font-size: 0.75rem;
+  color: var(--clr-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* ── Tabs ─────────────────────────────────────────────────────── */
+.pub-tabs-section {
+  background: var(--clr-bg-2);
+  border-bottom: 1px solid var(--clr-border);
+  position: sticky;
+  top: var(--navbar-h);
+  z-index: 50;
+}
+
+.pub-tabs {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.pub-tabs::-webkit-scrollbar { display: none; }
+
+.pub-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 1rem 1.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.pub-tab:hover { color: var(--clr-white); }
+
+.pub-tab.active {
+  color: var(--clr-accent);
+  border-bottom-color: var(--clr-accent);
+}
+
+.pub-tab-count {
+  background: rgba(79,142,247,0.12);
+  color: var(--clr-accent);
+  border-radius: var(--radius-pill);
+  padding: 1px 7px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* ── Content Area ─────────────────────────────────────────────── */
+.publications-body {
+  background: var(--clr-bg);
+}
+
+/* ── Journal Cards ────────────────────────────────────────────── */
+.journal-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.journal-card {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: var(--space-lg);
+  transition: var(--transition-base);
+}
+
+.journal-card:hover {
+  border-color: var(--clr-border-hover);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md), -4px 0 0 var(--clr-accent);
+}
+
+.journal-num {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(79,142,247,0.1);
+  border: 1px solid rgba(79,142,247,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--clr-accent);
+  flex-shrink: 0;
+}
+
+.journal-content {}
+
+.journal-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  margin-bottom: var(--space-sm);
+  line-height: 1.45;
+}
+
+.journal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.journal-name {
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+  font-style: italic;
+}
+
+/* ── Conference Cards ─────────────────────────────────────────── */
+.conference-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.conference-card {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.conference-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--grad-primary);
+  opacity: 0;
+  transition: var(--transition-base);
+}
+
+.conference-card:hover {
+  border-color: var(--clr-border-hover);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.conference-card:hover::before { opacity: 1; }
+
+.conference-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(0,212,170,0.1);
+  color: var(--clr-teal);
+  border: 1px solid rgba(0,212,170,0.2);
+  margin-bottom: var(--space-sm);
+}
+
+.conference-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  margin-bottom: var(--space-sm);
+  line-height: 1.45;
+}
+
+.conference-theme {
+  font-size: 0.82rem;
+  color: var(--clr-accent);
+  margin-bottom: var(--space-sm);
+  font-style: italic;
+}
+
+.conference-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-top: var(--space-sm);
+}
+
+.conference-meta span {
+  font-size: 0.78rem;
+  color: var(--clr-text-muted);
+}
+
+.conference-meta .sep { opacity: 0.3; }
+
+@media (max-width: 768px) {
+  .pub-counts { gap: var(--space-lg); flex-wrap: wrap; }
+  .journal-card { grid-template-columns: 1fr; }
+  .journal-num { display: none; }
+}

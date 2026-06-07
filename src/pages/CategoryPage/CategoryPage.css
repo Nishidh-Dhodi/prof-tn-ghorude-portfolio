@@ -1,0 +1,256 @@
+/* ================================================================
+   CATEGORY PAGE CSS — Study Resources
+   ================================================================ */
+
+.category-hero {
+  padding-top: calc(var(--navbar-h) + var(--space-4xl));
+  padding-bottom: var(--space-2xl);
+  background: var(--grad-hero);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--clr-border), transparent);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--clr-text-faint);
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.breadcrumb a,
+.breadcrumb button {
+  color: var(--clr-text-faint);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+  transition: var(--transition-fast);
+}
+
+.breadcrumb a:hover,
+.breadcrumb button:hover { color: var(--clr-accent); }
+
+.breadcrumb-sep {
+  opacity: 0.4;
+  user-select: none;
+}
+
+.breadcrumb-current {
+  color: var(--clr-text-muted);
+}
+
+.category-hero h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  margin-bottom: var(--space-sm);
+}
+
+.category-hero p {
+  color: var(--clr-text-muted);
+  max-width: 520px;
+}
+
+/* ── Filter Bar ──────────────────────────────────────────────── */
+.filter-bar {
+  background: var(--clr-bg-2);
+  border-bottom: 1px solid var(--clr-border);
+  padding: var(--space-md) 0;
+  position: sticky;
+  top: var(--navbar-h);
+  z-index: 50;
+}
+
+.filter-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-text-faint);
+  flex-shrink: 0;
+}
+
+.filter-chips {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  color: var(--clr-text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.filter-chip:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+}
+
+.filter-chip.active {
+  background: rgba(79,142,247,0.12);
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+}
+
+.filter-count {
+  margin-left: 4px;
+  background: rgba(79,142,247,0.12);
+  border-radius: var(--radius-pill);
+  padding: 0 5px;
+  font-size: 0.65rem;
+}
+
+/* ── Resource Grid ───────────────────────────────────────────── */
+.category-body {
+  background: var(--clr-bg);
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+
+.resource-card {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-card);
+}
+
+.resource-card:hover {
+  border-color: var(--clr-border-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.resource-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.resource-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.resource-icon.notes    { background: rgba(79,142,247,0.12); color: var(--clr-accent); }
+.resource-icon.lab      { background: rgba(0,212,170,0.12);  color: var(--clr-teal); }
+.resource-icon.qp       { background: rgba(240,180,41,0.12); color: var(--clr-gold); }
+
+.resource-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  line-height: 1.4;
+  flex: 1;
+  margin-right: var(--space-sm);
+}
+
+.resource-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.resource-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(255,255,255,0.05);
+  color: var(--clr-text-faint);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.resource-download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: rgba(79,142,247,0.08);
+  border: 1px solid rgba(79,142,247,0.2);
+  color: var(--clr-accent);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+
+.resource-download-btn:hover {
+  background: rgba(79,142,247,0.16);
+  border-color: var(--clr-accent);
+  transform: translateY(-1px);
+}
+
+/* ── Empty State ─────────────────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4xl);
+  text-align: center;
+  gap: var(--space-md);
+}
+
+.empty-state-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-xl);
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-text-faint);
+}
+
+.empty-state h3 { color: var(--clr-white); }
+.empty-state p  { color: var(--clr-text-muted); max-width: 360px; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .resource-grid { grid-template-columns: 1fr; }
+}
