@@ -1,51 +1,44 @@
 import { Link } from 'react-router-dom';
 import {
-  BookOpen, Award, Users, Cpu, Globe, Database,
-  Shield, Brain, Code, Network, Layers,
-  Mail, FileText, ChevronRight
+  BookOpen, Award, Users, Atom, FlaskConical,
+  Mail, FileText, ChevronRight, Star, Microscope
 } from 'lucide-react';
 import {
-  PROFESSOR, EXPERTISE, ACTIVITIES, ACHIEVEMENTS, EXPERIENCE, BOOKS
+  PROFESSOR, KEY_STATS, RESEARCH_AREAS, PHD_SCHOLARS, JOURNAL_PUBLICATIONS
 } from '../../data/portfolioData';
-import Timeline from '../../components/Timeline/Timeline';
 import './HomePage.css';
-import ProfHasanPhudinawalaPhoto from "../../assets/ProfHasanPhudinawalaPhoto.png";
 
-/* ── Icon map for expertise skills ─────────────────────────────── */
-const ICON_MAP = {
-  code:     <Code size={20} />,
-  python:   <Layers size={20} />,
-  java:     <Cpu size={20} />,
-  network:  <Network size={20} />,
-  brain:    <Brain size={20} />,
-  database: <Database size={20} />,
-  shield:   <Shield size={20} />,
-  cpu:      <Cpu size={20} />,
-  globe:    <Globe size={20} />,
-};
+// Atom icon map for research areas
+const AREA_ICONS = [
+  <Atom size={18} />, <FlaskConical size={18} />, <Microscope size={18} />,
+  <Star size={18} />, <Atom size={18} />, <FlaskConical size={18} />,
+  <Microscope size={18} />, <Star size={18} />, <Atom size={18} />,
+  <FlaskConical size={18} />, <Microscope size={18} />, <Star size={18} />,
+];
 
 export default function HomePage() {
   return (
     <main>
       {/* ── Promo Banner ─────────────────────────────────────── */}
       <div className="promo-banner" role="alert">
-        <p>🐍 {PROFESSOR.promoBanner}</p>
+        <p>🎓 {PROFESSOR.promoBanner}</p>
         <Link to={PROFESSOR.promoLink}>{PROFESSOR.promoLinkText}</Link>
       </div>
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="hero" id="home">
+        <div className="hero-glow" aria-hidden="true" />
         <div className="container">
           <div className="hero-grid">
             <div className="hero-content animate-fadeInUp">
               <div className="hero-status">
                 <span className="status-dot" />
-                Full-Time Faculty · Royal College
+                Vice-Principal &amp; Head · Physics Dept.
               </div>
 
               <h1 className="hero-title">
-                Prof. Hasan<br />
-                <span className="gradient-text">Phudinawala</span>
+                Prof. Dr. T. N.<br />
+                <span className="gradient-text">Ghorude</span>
               </h1>
 
               <p className="hero-subtitle">
@@ -57,49 +50,42 @@ export default function HomePage() {
                   <BookOpen size={16} />
                   View Publications
                 </Link>
-                <Link to="/category/cs/tycs/sem-v" className="btn btn-outline" id="hero-resources-btn">
-                  <FileText size={16} />
-                  Study Resources
+                <Link to="/phd-scholars" className="btn btn-outline" id="hero-scholars-btn">
+                  <Users size={16} />
+                  Ph.D. Scholars
                 </Link>
               </div>
 
               <div className="hero-stats">
-                <div className="stat-item">
-                  <span className="stat-number">10+</span>
-                  <span className="stat-label">Research Papers</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-number">7+</span>
-                  <span className="stat-label">Years Experience</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-number">5+</span>
-                  <span className="stat-label">Textbooks</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-number">500+</span>
-                  <span className="stat-label">Students Taught</span>
-                </div>
+                {KEY_STATS.map((stat, i) => (
+                  <div className="stat-item" key={i}>
+                    <span className="stat-number">{stat.number}</span>
+                    <span className="stat-label">{stat.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Avatar */}
+            {/* Avatar / Badge Side */}
             <div className="hero-avatar-wrap animate-fadeInUp animate-delay-2">
               <div className="hero-avatar-glow" />
               <div className="hero-avatar-ring">
                 <div className="hero-avatar-inner">
-                  <img
-                    src={ProfHasanPhudinawalaPhoto}
-                    alt="Prof. Hasan Phudinawala"
-                    className="hero-avatar"
-                  />
+                  <div className="hero-avatar-initials">TG</div>
                 </div>
               </div>
               <div className="hero-badge-floating">
-                <div className="badge-icon">📚</div>
+                <div className="badge-icon">🔬</div>
                 <div className="badge-text">
-                  <strong>Published Author</strong>
-                  <span>Tech-Neo Publications</span>
+                  <strong>Ph.D. Guide</strong>
+                  <span>University of Mumbai</span>
+                </div>
+              </div>
+              <div className="hero-badge-floating-2">
+                <div className="badge-icon">🏛️</div>
+                <div className="badge-text">
+                  <strong>Vice-Principal</strong>
+                  <span>Rajiv Gandhi College</span>
                 </div>
               </div>
             </div>
@@ -107,88 +93,87 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── About Section ────────────────────────────────────── */}
-      <section className="section about-section" id="about">
+      {/* ── About Snapshot ────────────────────────────────────── */}
+      <section className="section about-snapshot" id="about">
         <div className="container">
           <div className="section-header">
-            <div className="section-label">About Me</div>
+            <div className="section-label">About</div>
             <h2 className="section-title">
-              A Passionate Engineer &amp; <span className="gradient-text">Mentor</span>
+              Dedicated to <span className="gradient-text">Physics & Research</span>
             </h2>
           </div>
 
-          <div className="about-grid">
-            <div className="about-left animate-fadeInUp">
+          <div className="about-snap-grid">
+            <div className="about-snap-left animate-fadeInUp">
               <div className="about-highlight-box">
                 <p>
-                  "I firmly believe in Ethics &amp; Principles. My commitment is to quality
-                  teaching, student development, mentoring &amp; research activities."
+                  "A committed academician with over 32 years of teaching experience,
+                  leading physics research in polymer composites, gas sensors, and
+                  colorimetry — mentoring the next generation of scientists."
                 </p>
               </div>
               <p className="about-bio">{PROFESSOR.bio}</p>
-              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-                <span className="badge">M.E. Computer Engineering</span>
-                <span className="badge badge-teal">10+ Publications</span>
-                <span className="badge badge-gold">Published Author</span>
+              <div className="about-badges">
+                <span className="badge">Ph.D. — Physics</span>
+                <span className="badge badge-teal">7 Ph.D. Scholars</span>
+                <span className="badge badge-gold">32+ Years Teaching</span>
               </div>
+              <Link to="/about" className="btn btn-outline snap-cta">
+                Full Profile <ChevronRight size={14} />
+              </Link>
             </div>
 
-            <div className="about-right animate-fadeInUp animate-delay-2">
-              <p className="about-roles-title">Roles &amp; Activities</p>
-              <div className="about-roles-grid">
-                {ACTIVITIES.map((a) => (
-                  <div key={a} className="role-chip">{a}</div>
-                ))}
-              </div>
-
-              <p className="about-roles-title" style={{ marginTop: 'var(--space-2xl)' }}>
-                Professional Journey
-              </p>
-              <div className="experience-timeline">
-                {EXPERIENCE.slice(0, 5).map((exp, i) => (
-                  <div className="timeline-item-small" key={i}>
-                    <span className="timeline-year-small">{exp.year}</span>
-                    <div>
-                      <div className="timeline-role">{exp.role}</div>
-                      <div className="timeline-inst">{exp.institution}</div>
-                      <div className="timeline-dept">{exp.dept}</div>
-                    </div>
-                  </div>
-                ))}
+            <div className="about-snap-right animate-fadeInUp animate-delay-2">
+              <div className="snap-cards-grid">
+                <div className="snap-card">
+                  <div className="snap-card-icon"><BookOpen size={22} /></div>
+                  <div className="snap-card-number">20+</div>
+                  <div className="snap-card-label">Research Papers</div>
+                </div>
+                <div className="snap-card">
+                  <div className="snap-card-icon"><Users size={22} /></div>
+                  <div className="snap-card-number">7</div>
+                  <div className="snap-card-label">Ph.D. Scholars</div>
+                </div>
+                <div className="snap-card">
+                  <div className="snap-card-icon"><Award size={22} /></div>
+                  <div className="snap-card-number">5+</div>
+                  <div className="snap-card-label">Funded Projects</div>
+                </div>
+                <div className="snap-card">
+                  <div className="snap-card-icon"><Atom size={22} /></div>
+                  <div className="snap-card-number">32+</div>
+                  <div className="snap-card-label">Years Experience</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Career Timeline ───────────────────────────────────── */}
-      <Timeline />
-
       <div className="divider container" />
 
-      {/* ── Expertise Section ─────────────────────────────────── */}
-      <section className="section expertise-section" id="expertise">
+      {/* ── Research Areas ─────────────────────────────────────── */}
+      <section className="section research-areas-section" id="research">
         <div className="container">
           <div className="section-header">
-            <div className="section-label">Skills</div>
+            <div className="section-label">Research Focus</div>
             <h2 className="section-title">
-              Areas of <span className="gradient-text">Expertise</span>
+              Areas of <span className="gradient-text">Specialisation</span>
             </h2>
             <p className="section-desc">
-              Technical proficiencies spanning computer science fundamentals through
-              cutting-edge AI/ML domains.
+              Cutting-edge research spanning polymer composites, gas sensor technology,
+              nanocomposites, and optical colorimetry with bio-medical applications.
             </p>
           </div>
-          <div className="expertise-grid">
-            {EXPERTISE.map((skill, i) => (
+          <div className="research-areas-grid">
+            {RESEARCH_AREAS.map((area, i) => (
               <div
-                key={skill.label}
-                className={`expertise-card animate-fadeInUp animate-delay-${(i % 5) + 1}`}
+                key={area}
+                className={`research-area-card animate-fadeInUp animate-delay-${(i % 5) + 1}`}
               >
-                <div className="expertise-icon">
-                  {ICON_MAP[skill.icon] || <Code size={20} />}
-                </div>
-                <span className="expertise-label">{skill.label}</span>
+                <div className="ra-icon">{AREA_ICONS[i % AREA_ICONS.length]}</div>
+                <span className="ra-label">{area}</span>
               </div>
             ))}
           </div>
@@ -197,73 +182,75 @@ export default function HomePage() {
 
       <div className="divider container" />
 
-      {/* ── Books / Textbooks ─────────────────────────────────── */}
-      <section className="section books-section" id="books">
+      {/* ── Publications Preview ───────────────────────────────── */}
+      <section className="section publications-preview-section" id="publications">
         <div className="container">
           <div className="section-header">
-            <div className="section-label">Published Works</div>
+            <div className="section-label">Research Output</div>
             <h2 className="section-title">
-              Authored <span className="gradient-text">Textbooks</span>
+              Recent <span className="gradient-text">Publications</span>
             </h2>
-            <p className="section-desc">
-              University-curriculum textbooks authored and published through Tech-Neo Publications
-              for B.Sc. Computer Science and Information Technology students.
-            </p>
           </div>
-          <div className="books-grid">
-            {BOOKS.map((book, i) => (
-              <div
-                key={book.id}
-                className={`book-card animate-fadeInUp animate-delay-${(i % 3) + 1}`}
-              >
-                <div className="book-spine">
-                  {book.title.split(' ').slice(0, 2).join('\n')}
-                </div>
-                <div className="book-info">
-                  <div className="book-title">{book.title}</div>
-                  <div className="book-subtitle">{book.subtitle}</div>
-                  <p className="book-desc">{book.description}</p>
-                  <div className="book-meta">
-                    <span className="badge">{book.year}</span>
-                    <span className="badge badge-purple">{book.publisher}</span>
-                    {book.coAuthor && (
-                      <span className="badge badge-teal">Co-authored</span>
-                    )}
+          <div className="pub-preview-list">
+            {JOURNAL_PUBLICATIONS.slice(0, 4).map((pub, i) => (
+              <div key={pub.id} className={`pub-preview-card animate-fadeInUp animate-delay-${i + 1}`}>
+                <div className="pub-num">{String(i + 1).padStart(2, '0')}</div>
+                <div className="pub-preview-content">
+                  <div className="pub-preview-title">{pub.title}</div>
+                  <div className="pub-preview-meta">
+                    <span className="pub-journal">{pub.journal}</span>
+                    <span className="badge">{pub.year}</span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+          <div className="section-cta-wrap">
+            <Link to="/publications" className="btn btn-primary" id="home-all-pubs-btn">
+              <FileText size={16} />
+              View All Publications
+              <ChevronRight size={14} />
+            </Link>
+          </div>
         </div>
       </section>
 
       <div className="divider container" />
 
-      {/* ── Achievements ──────────────────────────────────────── */}
-      <section className="section achievements-section" id="achievements">
+      {/* ── Ph.D. Scholars Preview ─────────────────────────────── */}
+      <section className="section scholars-preview-section" id="scholars">
         <div className="container">
           <div className="section-header">
-            <div className="section-label">Accomplishments</div>
+            <div className="section-label">Research Guidance</div>
             <h2 className="section-title">
-              Achievements &amp; <span className="gradient-text">Recognitions</span>
+              Ph.D. Scholars <span className="gradient-text">Supervised</span>
             </h2>
+            <p className="section-desc">
+              Seven research scholars have successfully completed their doctoral degrees
+              under the guidance of Prof. Dr. T. N. Ghorude.
+            </p>
           </div>
-          <div className="achievements-grid">
-            {ACHIEVEMENTS.map((ach, i) => (
-              <div
-                key={ach.id}
-                className={`achievement-card animate-fadeInUp animate-delay-${(i % 4) + 1}`}
-              >
-                <span className="achievement-year">{ach.year}</span>
-                <div className="achievement-title">{ach.title}</div>
-                <p className="achievement-desc">{ach.description}</p>
+          <div className="scholars-preview-grid">
+            {PHD_SCHOLARS.slice(0, 3).map((scholar, i) => (
+              <div key={scholar.srNo} className={`scholar-preview-card animate-fadeInUp animate-delay-${i + 1}`}>
+                <div className="scholar-num">#{scholar.srNo}</div>
+                <div className="scholar-preview-name">{scholar.name}</div>
+                <p className="scholar-preview-topic">{scholar.topic}</p>
+                <span className="badge badge-teal">{scholar.status}</span>
               </div>
             ))}
+          </div>
+          <div className="section-cta-wrap">
+            <Link to="/phd-scholars" className="btn btn-outline" id="home-all-scholars-btn">
+              <Users size={16} />
+              View All 7 Scholars
+              <ChevronRight size={14} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ── CTA ───────────────────────────────────────────────── */}
+      {/* ── CTA Section ────────────────────────────────────────── */}
       <section className="section cta-section">
         <div className="container">
           <div className="cta-box">
@@ -274,22 +261,22 @@ export default function HomePage() {
               Collaborate or <span className="gradient-text">Connect</span>
             </h2>
             <p>
-              Whether you're a student seeking guidance, a fellow researcher
-              looking to collaborate, or an institution seeking a resource person —
-              feel free to reach out.
+              Whether you're a research scholar seeking Ph.D. guidance, a fellow
+              researcher looking to collaborate, or an institution seeking an expert
+              in polymer physics — reach out today.
             </p>
             <div className="cta-actions">
               <a
-                href="mailto:hasanphudinawala@gmail.com"
+                href="mailto:ghorude@rajivgandhicollege.ac.in"
                 className="btn btn-primary"
                 id="cta-email-btn"
               >
                 <Mail size={16} />
                 Send an Email
               </a>
-              <Link to="/publications" className="btn btn-outline" id="cta-pubs-btn">
-                <BookOpen size={16} />
-                View All Publications
+              <Link to="/research-projects" className="btn btn-outline" id="cta-projects-btn">
+                <FlaskConical size={16} />
+                Research Projects
                 <ChevronRight size={14} />
               </Link>
             </div>

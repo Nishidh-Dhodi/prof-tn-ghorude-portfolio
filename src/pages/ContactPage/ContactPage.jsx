@@ -119,7 +119,7 @@ export default function ContactPage() {
             <aside className="contact-info-panel">
               {/* ── Profile identity card ── */}
               <div className="cip-identity">
-                <div className="cip-avatar">HP</div>
+                <div className="cip-avatar">TG</div>
                 <div>
                   <div className="cip-name">{PROFESSOR.name}</div>
                   <div className="cip-role">{PROFESSOR.title}</div>
@@ -210,7 +210,7 @@ export default function ContactPage() {
                   </div>
                   <h3>Message Received!</h3>
                   <p>
-                    Thank you for reaching out. Prof. Phudinawala will get back
+                    Thank you for reaching out. Prof. Dr. Ghorude will get back
                     to you shortly via your provided email address.
                   </p>
                   <button
@@ -240,7 +240,7 @@ export default function ContactPage() {
                   <div className="form-header">
                     <h2 className="form-title">Send a Message</h2>
                     <p className="form-subtitle">
-                      Fill in the fields below and Prof. Phudinawala will
+                      Fill in the fields below and Prof. Dr. Ghorude will
                       respond promptly.
                     </p>
                   </div>

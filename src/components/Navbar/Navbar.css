@@ -1,6 +1,8 @@
 /* ================================================================
-   NAVBAR CSS — Desktop mega-dropdowns + Mobile hamburger drawer
+   NAVBAR CSS — Prof. Dr. T. N. Ghorude Portfolio
+   Semantic dropdowns + Mobile off-canvas drawer
    Full theme-aware (dark / light) via CSS variables
+   Vanilla CSS only — No Tailwind
    ================================================================ */
 
 /* ── Shell ──────────────────────────────────────────────────── */
@@ -32,10 +34,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
 }
 
-/* ── Brand ───────────────────────────────────────────────────── */
+/* ── Brand ────────────────────────────────────────────────────── */
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -55,10 +57,12 @@
   justify-content: center;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
   color: #fff;
-  box-shadow: 0 0 12px rgba(90, 156, 248, 0.4);
+  box-shadow: 0 0 14px rgba(90, 156, 248, 0.45);
   flex-shrink: 0;
+  user-select: none;
 }
 
 .navbar-brand-text {
@@ -69,7 +73,7 @@
 
 .navbar-brand-name {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--clr-heading);
   white-space: nowrap;
@@ -79,17 +83,20 @@
   font-size: 0.68rem;
   color: var(--clr-text-muted);
   white-space: nowrap;
+  margin-top: 1px;
 }
 
-/* ── Desktop Nav ─────────────────────────────────────────────── */
+/* ── Desktop Nav ──────────────────────────────────────────────── */
 .navbar-nav {
   display: flex;
   align-items: center;
   gap: 2px;
   list-style: none;
+  flex: 1;
+  justify-content: center;
 }
 
-.navbar-nav > li {
+.nav-item {
   position: relative;
 }
 
@@ -98,7 +105,7 @@
   align-items: center;
   gap: 5px;
   padding: 0.5rem 0.85rem;
-  font-size: 0.875rem;
+  font-size: 0.855rem;
   font-weight: 500;
   color: var(--clr-text-muted);
   border-radius: var(--radius-sm);
@@ -109,14 +116,14 @@
   border: none;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover {
   color: var(--clr-heading);
   background: rgba(90, 156, 248, 0.08);
 }
 
 .nav-link.active {
   color: var(--clr-accent);
+  background: rgba(90, 156, 248, 0.1);
 }
 
 .nav-chevron {
@@ -126,18 +133,18 @@
   opacity: 0.6;
 }
 
-.navbar-nav > li:hover .nav-chevron {
+.nav-item:hover .nav-chevron {
   transform: rotate(180deg);
   opacity: 1;
 }
 
-/* ── Level-1 Dropdown ────────────────────────────────────────── */
+/* ── Dropdown ─────────────────────────────────────────────────── */
 .dropdown {
   position: absolute;
   top: calc(100% + 10px);
   left: 50%;
-  transform: translateX(-50%);
-  min-width: 210px;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 220px;
   background: var(--dropdown-bg);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-md);
@@ -146,12 +153,24 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateX(-50%) translateY(-8px);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
   z-index: 100;
 }
 
+/* Invisible hover bridge — fills the 10px gap so mouse travel
+   from the trigger link into the menu box never hits dead air */
 .dropdown::before {
+  content: '';
+  position: absolute;
+  top: -15px;       /* slightly taller than the gap to be safe   */
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: transparent;
+}
+
+/* Visual caret arrow — kept as a separate pseudo on ::after */
+.dropdown::after {
   content: '';
   position: absolute;
   top: -6px;
@@ -163,27 +182,21 @@
   border-left: 1px solid var(--clr-border);
   border-top: 1px solid var(--clr-border);
   rotate: 45deg;
+  pointer-events: none;  /* don't let the caret block hover events */
 }
 
-.navbar-nav > li:hover .dropdown {
+.nav-item:hover .dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
 
-/* ── Level-1 Dropdown Items ──────────────────────────────────── */
-.dropdown-item {
-  position: relative;
-  border-radius: var(--radius-sm);
-}
-
 .dropdown-link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-sm);
-  padding: 0.5rem 0.75rem;
+  gap: 10px;
+  padding: 0.5rem 0.8rem;
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--clr-text-muted);
@@ -198,86 +211,102 @@
 }
 
 .dropdown-link:hover,
-.dropdown-item:hover > .dropdown-link {
+.dropdown-link.active {
   color: var(--clr-heading);
   background: rgba(90, 156, 248, 0.1);
 }
 
-.dropdown-chevron {
-  width: 12px;
-  height: 12px;
-  opacity: 0.5;
-  flex-shrink: 0;
-  transition: var(--transition-fast);
-}
+.dropdown-link.active { color: var(--clr-accent); }
 
-.dropdown-item:hover .dropdown-chevron {
-  transform: rotate(-90deg);
-  opacity: 1;
-}
-
-/* ── Level-2 Submenu ─────────────────────────────────────────── */
-.submenu {
-  position: absolute;
-  top: -6px;
-  left: calc(100% + 6px);
-  min-width: 180px;
-  background: var(--submenu-bg);
-  border: 1px solid var(--clr-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
-  padding: 6px;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateX(-8px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-  z-index: 101;
-}
-
-.dropdown-item:hover .submenu {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateX(0);
-}
-
-.submenu-link {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: 0.45rem 0.75rem;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--clr-text-muted);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: var(--transition-fast);
-  white-space: nowrap;
-  background: none;
-  border: none;
-  width: 100%;
-  text-align: left;
-}
-
-.submenu-link:hover {
-  color: var(--clr-accent);
-  background: rgba(90, 156, 248, 0.08);
-  padding-left: 1rem;
-}
-
-.submenu-dot {
+.dropdown-dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background: var(--clr-accent);
-  opacity: 0.4;
+  opacity: 0.35;
+  flex-shrink: 0;
+  transition: var(--transition-fast);
+}
+
+.dropdown-link:hover .dropdown-dot,
+.dropdown-link.active .dropdown-dot {
+  opacity: 1;
+}
+
+/* ── Right Utilities ──────────────────────────────────────────── */
+.navbar-utils {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
   flex-shrink: 0;
 }
 
-.submenu-link:hover .submenu-dot { opacity: 1; }
+/* ── Navbar Theme Toggle ──────────────────────────────────────── */
+.navbar-theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px 5px 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--clr-border);
+  background: var(--clr-bg-elevated);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  color: var(--clr-text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
 
-/* ── Hamburger Button ────────────────────────────────────────── */
+.navbar-theme-btn:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-heading);
+  background: rgba(90, 156, 248, 0.08);
+}
+
+.theme-track {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(90, 156, 248, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-accent);
+}
+
+.theme-label {
+  letter-spacing: 0.02em;
+}
+
+/* ── Register Now CTA Button ──────────────────────────────────── */
+.navbar-cta-btn {
+  display: flex;
+  align-items: center;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: var(--grad-primary);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 14px rgba(90, 156, 248, 0.35);
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.navbar-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(90, 156, 248, 0.5);
+}
+
+/* ── Hamburger Button ─────────────────────────────────────────── */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -291,7 +320,7 @@
   z-index: 1100;
 }
 
-.hamburger:hover { background: rgba(90,156,248,0.08); }
+.hamburger:hover { background: rgba(90, 156, 248, 0.08); }
 
 .hamburger-line {
   width: 22px;
@@ -313,7 +342,7 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ── Mobile Drawer & Layout Framework ────────────────────────── */
+/* ── Mobile Overlay ───────────────────────────────────────────── */
 .mobile-overlay {
   position: fixed;
   inset: 0;
@@ -321,20 +350,18 @@
   backdrop-filter: blur(4px);
   z-index: 900;
   opacity: 0;
-  
-  /* FIXED: Use visibility and pointer-events rules when closed */
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* FIXED: Toggle overlay interactive tracking layout constraints */
 .mobile-overlay.open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
+/* ── Mobile Drawer ────────────────────────────────────────────── */
 .mobile-drawer {
   position: fixed;
   top: 0;
@@ -347,8 +374,7 @@
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  
-  /* FIXED: Clear click absorption when drawer layer is fully tucked away */
+  /* SAFEGUARD: eliminate click dead-zones when drawer is tucked away */
   visibility: hidden;
   pointer-events: none;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
@@ -357,7 +383,7 @@
   overflow-y: auto;
 }
 
-/* FIXED: Restore state bindings when slider panel triggers open */
+/* Restore bindings only when open */
 .mobile-drawer.open {
   transform: translateX(0);
   visibility: visible;
@@ -381,19 +407,18 @@
   width: 32px;
   height: 32px;
   border-radius: var(--radius-sm);
-  background: rgba(90,156,248,0.08);
+  background: rgba(90, 156, 248, 0.08);
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--clr-text-muted);
-  font-size: 1.2rem;
   transition: var(--transition-fast);
 }
 
 .mobile-drawer-close:hover {
-  background: rgba(90,156,248,0.15);
+  background: rgba(90, 156, 248, 0.15);
   color: var(--clr-heading);
 }
 
@@ -435,6 +460,7 @@
   height: 14px;
   opacity: 0.5;
   transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .mobile-chevron.open { transform: rotate(180deg); opacity: 1; }
@@ -445,25 +471,15 @@
   transition: max-height 0.35s ease;
 }
 
-.mobile-dropdown.open { max-height: 600px; }
+.mobile-dropdown.open { max-height: 400px; }
 
 .mobile-dropdown-inner { padding: 4px 0 4px 12px; }
-
-.mobile-dropdown-label {
-  padding: 0.5rem 1rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--clr-accent);
-  opacity: 0.8;
-}
 
 .mobile-sub-link {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 0.85rem;
   color: var(--clr-text-muted);
   border-radius: var(--radius-sm);
@@ -475,10 +491,13 @@
   text-align: left;
 }
 
-.mobile-sub-link:hover {
+.mobile-sub-link:hover,
+.mobile-sub-link.active {
   color: var(--clr-heading);
   background: rgba(90, 156, 248, 0.06);
 }
+
+.mobile-sub-link.active { color: var(--clr-accent); }
 
 .mobile-dot {
   width: 5px;
@@ -489,20 +508,58 @@
   flex-shrink: 0;
 }
 
-.mobile-sub-link:hover .mobile-dot { opacity: 1; }
+.mobile-sub-link:hover .mobile-dot,
+.mobile-sub-link.active .mobile-dot { opacity: 1; }
 
 .mobile-nav-footer {
   padding: var(--space-lg) var(--space-xl);
   border-top: 1px solid var(--clr-border);
-  font-size: 0.78rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.mobile-register-btn {
+  width: 100%;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-md);
+  background: var(--grad-primary);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 14px rgba(90, 156, 248, 0.35);
+  transition: var(--transition-fast);
+  text-align: center;
+}
+
+.mobile-register-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(90, 156, 248, 0.45);
+}
+
+.mobile-nav-footer p {
+  font-size: 0.72rem;
   color: var(--clr-text-faint);
   text-align: center;
 }
 
-/* ── Mobile Breakpoint — Configuration Realignment ───────────── */
+/* ── Mobile Breakpoint ────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .navbar-nav { display: none; }
-  .hamburger  { display: flex; }
-  
-  /* FIXED: Kept clean declarations out of root initialization to prevent mobile input dead-zones */
+  .navbar-nav    { display: none; }
+  .hamburger     { display: flex; }
+  .navbar-cta-btn { display: none; }
+  .navbar-theme-btn .theme-label { display: none; }
+
+  .navbar-inner {
+    padding-inline: var(--space-lg);
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-brand-name  { font-size: 0.82rem; }
+  .navbar-brand-title { display: none; }
+  .navbar-theme-btn   { padding: 5px; }
 }

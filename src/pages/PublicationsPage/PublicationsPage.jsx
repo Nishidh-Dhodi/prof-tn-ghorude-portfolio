@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { BookOpen, FileText, Award, Calendar, Bookmark } from 'lucide-react';
-import { JOURNAL_PUBLICATIONS, CONFERENCE_PUBLICATIONS, BOOKS } from '../../data/portfolioData';
+import { BookOpen, FileText, Award, Calendar, Bookmark, FlaskConical } from 'lucide-react';
+import {
+  JOURNAL_PUBLICATIONS, CONFERENCE_PUBLICATIONS, PATENTS
+} from '../../data/portfolioData';
 import './PublicationsPage.css';
 
 const TABS = [
-  { id: 'journals',     label: 'Journal Papers',   icon: <FileText size={15} /> },
-  { id: 'conferences',  label: 'Conference Papers', icon: <Award size={15} /> },
-  { id: 'books',        label: 'Textbooks',         icon: <BookOpen size={15} /> },
+  { id: 'journals',    label: 'Journal Papers',   icon: <FileText size={15} />,    count: JOURNAL_PUBLICATIONS.length },
+  { id: 'conferences', label: 'Conference Papers', icon: <Award size={15} />,       count: CONFERENCE_PUBLICATIONS.length },
+  { id: 'patents',     label: 'Patents',           icon: <FlaskConical size={15} />, count: PATENTS.length },
 ];
 
 export default function PublicationsPage() {
@@ -22,26 +24,20 @@ export default function PublicationsPage() {
             Research &amp; Scholarship
           </div>
           <h1>
-            Publications &amp; <span className="gradient-text">Authored Works</span>
+            Publications &amp; <span className="gradient-text">Research Output</span>
           </h1>
           <p>
             A curated collection of peer-reviewed journal papers, conference
-            presentations, and authored textbooks spanning AI, ML, Networking,
-            and Computer Science education.
+            presentations, and patents in Polymer Physics, Gas Sensors,
+            Nanocomposites, and Colorimetry.
           </p>
           <div className="pub-counts">
-            <div className="pub-count-item">
-              <span className="pub-count-num">{JOURNAL_PUBLICATIONS.length}</span>
-              <span className="pub-count-label">Journal Papers</span>
-            </div>
-            <div className="pub-count-item">
-              <span className="pub-count-num">{CONFERENCE_PUBLICATIONS.length}</span>
-              <span className="pub-count-label">Conference Papers</span>
-            </div>
-            <div className="pub-count-item">
-              <span className="pub-count-num">{BOOKS.length}</span>
-              <span className="pub-count-label">Textbooks</span>
-            </div>
+            {TABS.map((t) => (
+              <div className="pub-count-item" key={t.id}>
+                <span className="pub-count-num">{t.count}</span>
+                <span className="pub-count-label">{t.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -61,11 +57,7 @@ export default function PublicationsPage() {
               >
                 {tab.icon}
                 {tab.label}
-                <span className="pub-tab-count">
-                  {tab.id === 'journals'    && JOURNAL_PUBLICATIONS.length}
-                  {tab.id === 'conferences' && CONFERENCE_PUBLICATIONS.length}
-                  {tab.id === 'books'       && BOOKS.length}
-                </span>
+                <span className="pub-tab-count">{tab.count}</span>
               </button>
             ))}
           </div>
@@ -75,6 +67,7 @@ export default function PublicationsPage() {
       {/* ── Body ─────────────────────────────────────────────── */}
       <section className="section publications-body">
         <div className="container">
+
           {/* ── Journal Papers ─────────────────────────────── */}
           {activeTab === 'journals' && (
             <div className="journal-list animate-fadeIn" role="tabpanel">
@@ -86,11 +79,8 @@ export default function PublicationsPage() {
                     <div className="journal-meta">
                       <span className="journal-name">{pub.journal}</span>
                       <span className="badge">{pub.year}</span>
-                      {pub.issn && (
-                        <span className="badge badge-teal">ISSN: {pub.issn}</span>
-                      )}
-                      {pub.volume && (
-                        <span className="badge badge-purple">{pub.volume}</span>
+                      {pub.authors && (
+                        <span className="badge badge-teal">{pub.authors}</span>
                       )}
                     </div>
                   </div>
@@ -104,9 +94,7 @@ export default function PublicationsPage() {
             <div className="conference-list animate-fadeIn" role="tabpanel">
               {CONFERENCE_PUBLICATIONS.map((pub) => (
                 <div key={pub.id} className="conference-card">
-                  <span className="conference-type-badge">
-                    {pub.type}
-                  </span>
+                  <span className="conference-type-badge">{pub.type}</span>
                   <div className="conference-title">{pub.title}</div>
                   <div className="conference-theme">{pub.theme}</div>
                   <div className="conference-meta">
@@ -114,42 +102,36 @@ export default function PublicationsPage() {
                     <span className="sep">·</span>
                     <Calendar size={12} style={{ opacity: 0.5 }} />
                     <span>{pub.date}</span>
-                    {pub.issn && pub.issn !== 'N/A' && (
-                      <>
-                        <span className="sep">·</span>
-                        <span>ISSN: {pub.issn}</span>
-                      </>
-                    )}
                   </div>
                 </div>
               ))}
             </div>
           )}
 
-          {/* ── Textbooks ───────────────────────────────────── */}
-          {activeTab === 'books' && (
-            <div className="animate-fadeIn" role="tabpanel">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: 'var(--space-xl)' }}>
-                {BOOKS.map((book) => (
-                  <div key={book.id} className="card">
-                    <div className="badge badge-purple" style={{ marginBottom: 'var(--space-md)' }}>
-                      {book.publisher} · {book.year}
+          {/* ── Patents ─────────────────────────────────────── */}
+          {activeTab === 'patents' && (
+            <div className="patents-list animate-fadeIn" role="tabpanel">
+              {PATENTS.map((patent, i) => (
+                <div key={patent.id} className="patent-card">
+                  <div className="patent-num">{String(i + 1).padStart(2, '0')}</div>
+                  <div className="patent-content">
+                    <div className="patent-title">{patent.title}</div>
+                    <div className="patent-meta">
+                      <span className="badge">App. No: {patent.applicationNo}</span>
+                      <span className="badge badge-teal">Filed: {patent.filedDate}</span>
+                      <span className={`badge ${patent.status === 'Granted' ? 'badge-gold' : 'badge-purple'}`}>
+                        {patent.status}
+                      </span>
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', marginBottom: '0.4rem' }}>{book.title}</h3>
-                    <p style={{ color: 'var(--clr-accent)', fontSize: '0.82rem', marginBottom: 'var(--space-sm)', fontWeight: 500 }}>
-                      {book.subtitle}
-                    </p>
-                    <p style={{ fontSize: '0.85rem', lineHeight: 1.65 }}>{book.description}</p>
-                    {book.coAuthor && (
-                      <div style={{ marginTop: 'var(--space-sm)' }}>
-                        <span className="badge badge-teal">Co-author: {book.coAuthor}</span>
-                      </div>
-                    )}
+                    <div className="patent-inventors">
+                      👤 {patent.inventors}
+                    </div>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           )}
+
         </div>
       </section>
     </main>

@@ -1,11 +1,28 @@
 import { useNavigate } from 'react-router-dom';
-import { GraduationCap, Mail } from 'lucide-react';
+import { Mail, Atom } from 'lucide-react';
 import { NAV_LINKS, PROFESSOR } from '../../data/portfolioData';
 import './Footer.css';
 
 export default function Footer() {
   const navigate = useNavigate();
   const year = new Date().getFullYear();
+
+  // Flatten nav links for footer
+  const flatLinks = NAV_LINKS.reduce((acc, link) => {
+    acc.push({ label: link.label, path: link.path });
+    if (link.dropdown) {
+      link.dropdown.forEach(d => acc.push({ label: d.label, path: d.path }));
+    }
+    return acc;
+  }, []);
+
+  const primaryLinks = NAV_LINKS.map(l => ({ label: l.label, path: l.path }));
+  const researchLinks = [
+    { label: 'Publications',              path: '/publications' },
+    { label: 'Ph.D. Scholars Supervised', path: '/phd-scholars' },
+    { label: 'Research Projects',         path: '/research-projects' },
+    { label: 'Patents',                   path: '/publications' },
+  ];
 
   return (
     <footer className="footer" role="contentinfo">
@@ -14,15 +31,13 @@ export default function Footer() {
           {/* ── Brand ─────────────────────────────────────── */}
           <div className="footer-brand">
             <div className="footer-brand-logo">
-              <div className="footer-brand-icon">
-                <GraduationCap size={18} />
-              </div>
-              <span className="footer-brand-name">Prof. Hasan Phudinawala</span>
+              <div className="footer-brand-icon">TG</div>
+              <span className="footer-brand-name">Prof. Dr. T. N. Ghorude</span>
             </div>
             <p className="footer-bio">
-              Assistant Professor in Computer Science &amp; IT with 7+ years of
-              experience in teaching, research, and mentoring students across
-              Mumbai University affiliated colleges.
+              Vice-Principal &amp; Head, Department of Physics at Rajiv Gandhi College
+              of Arts, Science &amp; Commerce, Mumbai. Dedicated to advancing physics
+              research in polymer composites, gas sensors, and colorimetry.
             </p>
             <a
               href={`mailto:${PROFESSOR.email}`}
@@ -38,7 +53,7 @@ export default function Footer() {
           <div>
             <div className="footer-col-title">Navigation</div>
             <div className="footer-links">
-              {NAV_LINKS.map((link) => (
+              {primaryLinks.map((link) => (
                 <button
                   key={link.label}
                   className="footer-link"
@@ -50,15 +65,25 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* ── Quick Links ───────────────────────────────── */}
+          {/* ── Research Links ─────────────────────────────── */}
           <div>
-            <div className="footer-col-title">Quick Resources</div>
+            <div className="footer-col-title">Research</div>
             <div className="footer-links">
-              <button className="footer-link" onClick={() => navigate('/category/cs/tycs/sem-vi')}>TYCS Sem VI</button>
-              <button className="footer-link" onClick={() => navigate('/category/cs/tycs/sem-v')}>TYCS Sem V</button>
-              <button className="footer-link" onClick={() => navigate('/category/cs/sycs/sem-iv')}>SYCS Sem IV</button>
-              <button className="footer-link" onClick={() => navigate('/category/it/syit/sem-iv')}>SYIT Sem IV</button>
-              <button className="footer-link" onClick={() => navigate('/publications')}>All Publications</button>
+              {researchLinks.map((link) => (
+                <button
+                  key={link.label}
+                  className="footer-link"
+                  onClick={() => navigate(link.path)}
+                >
+                  {link.label}
+                </button>
+              ))}
+              <button className="footer-link" onClick={() => navigate('/career-timeline')}>
+                Career Timeline
+              </button>
+              <button className="footer-link" onClick={() => navigate('/contact')}>
+                Contact
+              </button>
             </div>
           </div>
         </div>
@@ -66,10 +91,11 @@ export default function Footer() {
         {/* ── Bottom Bar ────────────────────────────────────── */}
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © {year} Prof. Hasan Phudinawala. All rights reserved.
+            © {year} Prof. Dr. T. N. Ghorude · Rajiv Gandhi College of Arts, Science &amp; Commerce, Mumbai
           </p>
           <div className="footer-bottom-links">
-            <a href="mailto:hasanphudinawala@gmail.com">Contact</a>
+            <a href={`mailto:${PROFESSOR.email}`}>Contact</a>
+            <button onClick={() => navigate('/phd-scholars')}>Ph.D. Scholars</button>
           </div>
         </div>
       </div>

@@ -1,16 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { ChevronDown, ChevronRight, Menu, X, GraduationCap } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '../../data/portfolioData';
 import './Navbar.css';
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+export default function Navbar({ theme, onToggle }) {
+  const [scrolled,       setScrolled]       = useState(false);
+  const [drawerOpen,     setDrawerOpen]     = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState(null);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const drawerRef = useRef(null);
+  const navigate  = useNavigate();
+  const location  = useLocation();
 
   /* ── Scroll listener ─────────────────────────────────────── */
   useEffect(() => {
@@ -36,34 +35,38 @@ export default function Navbar() {
     setDrawerOpen(false);
   };
 
-  const isActive = (path) => location.pathname === path;
+  const isActive    = (path) => location.pathname === path;
+  const isParentActive = (link) => {
+    if (!link.dropdown) return location.pathname === link.path;
+    return link.dropdown.some(d => location.pathname === d.path);
+  };
 
   const toggleMobile = (label) =>
     setOpenMobileMenu(prev => (prev === label ? null : label));
+
+  const isLight = theme === 'light';
 
   return (
     <>
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`} id="navbar">
         <div className="navbar-inner">
-          {/* ── Brand ─────────────────────────────────────── */}
+          {/* ── Brand ─────────────────────────────────────────── */}
           <a className="navbar-brand" onClick={() => goTo('/')} aria-label="Home">
-            <div className="navbar-brand-icon">
-              <GraduationCap size={18} />
-            </div>
+            <div className="navbar-brand-icon" aria-hidden="true">TG</div>
             <div className="navbar-brand-text">
-              <span className="navbar-brand-name">Prof. H. Phudinawala</span>
-              <span className="navbar-brand-title">CS &amp; IT Educator</span>
+              <span className="navbar-brand-name">Prof. Dr. T. N. Ghorude</span>
+              <span className="navbar-brand-title">Vice-Principal &amp; Head, Physics</span>
             </div>
           </a>
 
-          {/* ── Desktop Nav ───────────────────────────────── */}
+          {/* ── Desktop Nav ─────────────────────────────────── */}
           <ul className="navbar-nav" role="navigation" aria-label="Main navigation">
             {NAV_LINKS.map((link) => (
-              <li key={link.label}>
+              <li key={link.label} className="nav-item">
                 {link.dropdown ? (
                   <>
                     <button
-                      className={`nav-link${location.pathname.startsWith(link.path) ? ' active' : ''}`}
+                      className={`nav-link${isParentActive(link) ? ' active' : ''}`}
                       aria-haspopup="true"
                     >
                       {link.label}
@@ -71,35 +74,16 @@ export default function Navbar() {
                     </button>
 
                     <div className="dropdown" role="menu">
-                      {link.dropdown.map((group) => (
-                        <div key={group.label} className="dropdown-item">
-                          <button
-                            className="dropdown-link"
-                            onClick={() => goTo(group.path)}
-                            role="menuitem"
-                          >
-                            {group.label}
-                            {group.sub && (
-                              <ChevronRight className="dropdown-chevron" size={12} />
-                            )}
-                          </button>
-
-                          {group.sub && (
-                            <div className="submenu" role="menu">
-                              {group.sub.map((s) => (
-                                <button
-                                  key={s.label}
-                                  className="submenu-link"
-                                  onClick={() => goTo(s.path)}
-                                  role="menuitem"
-                                >
-                                  <span className="submenu-dot" />
-                                  {s.label}
-                                </button>
-                              ))}
-                            </div>
-                          )}
-                        </div>
+                      {link.dropdown.map((item) => (
+                        <button
+                          key={item.label}
+                          className={`dropdown-link${isActive(item.path) ? ' active' : ''}`}
+                          onClick={() => goTo(item.path)}
+                          role="menuitem"
+                        >
+                          <span className="dropdown-dot" aria-hidden="true" />
+                          {item.label}
+                        </button>
                       ))}
                     </div>
                   </>
@@ -115,42 +99,72 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* ── Hamburger ─────────────────────────────────── */}
-          <button
-            id="hamburger-btn"
-            className={`hamburger${drawerOpen ? ' open' : ''}`}
-            aria-label="Toggle navigation"
-            aria-expanded={drawerOpen}
-            onClick={() => setDrawerOpen(p => !p)}
-          >
-            <span className="hamburger-line" />
-            <span className="hamburger-line" />
-            <span className="hamburger-line" />
-          </button>
+          {/* ── Right Utilities ─────────────────────────────── */}
+          <div className="navbar-utils">
+            {/* Theme Toggle */}
+            <button
+              id="navbar-theme-toggle"
+              className={`navbar-theme-btn${isLight ? ' light' : ''}`}
+              onClick={onToggle}
+              aria-label={isLight ? 'Switch to dark mode' : 'Switch to light mode'}
+              title={isLight ? 'Dark mode' : 'Light mode'}
+            >
+              <span className="theme-track">
+                <span className="theme-thumb">
+                  {isLight ? (
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                  ) : (
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                  )}
+                </span>
+              </span>
+              <span className="theme-label">{isLight ? 'Light' : 'Dark'}</span>
+            </button>
+
+            {/* Register Now CTA */}
+            <button
+              id="navbar-register-btn"
+              className="navbar-cta-btn"
+              onClick={() => goTo('/contact')}
+            >
+              Register Now
+            </button>
+
+            {/* Hamburger */}
+            <button
+              id="hamburger-btn"
+              className={`hamburger${drawerOpen ? ' open' : ''}`}
+              aria-label="Toggle navigation"
+              aria-expanded={drawerOpen}
+              onClick={() => setDrawerOpen(p => !p)}
+            >
+              <span className="hamburger-line" />
+              <span className="hamburger-line" />
+              <span className="hamburger-line" />
+            </button>
+          </div>
         </div>
       </nav>
 
-      {/* ── Mobile Overlay ────────────────────────────────── */}
+      {/* ── Mobile Overlay ──────────────────────────────────── */}
       <div
         className={`mobile-overlay${drawerOpen ? ' open' : ''}`}
         onClick={() => setDrawerOpen(false)}
         aria-hidden="true"
       />
 
-      {/* ── Mobile Drawer ─────────────────────────────────── */}
+      {/* ── Mobile Drawer ────────────────────────────────────── */}
       <aside
-        ref={drawerRef}
         id="mobile-drawer"
         className={`mobile-drawer${drawerOpen ? ' open' : ''}`}
         aria-label="Mobile navigation"
       >
         <div className="mobile-drawer-header">
-          <div className="navbar-brand">
-            <div className="navbar-brand-icon">
-              <GraduationCap size={16} />
-            </div>
+          <div className="navbar-brand" style={{ cursor: 'default' }}>
+            <div className="navbar-brand-icon" aria-hidden="true">TG</div>
             <div className="navbar-brand-text">
-              <span className="navbar-brand-name">H. Phudinawala</span>
+              <span className="navbar-brand-name">Dr. T. N. Ghorude</span>
+              <span className="navbar-brand-title">Physics Dept.</span>
             </div>
           </div>
           <button
@@ -168,7 +182,7 @@ export default function Navbar() {
               {link.dropdown ? (
                 <>
                   <button
-                    className={`mobile-nav-link${location.pathname.startsWith(link.path) ? ' active' : ''}`}
+                    className={`mobile-nav-link${isParentActive(link) ? ' active' : ''}`}
                     onClick={() => toggleMobile(link.label)}
                     aria-expanded={openMobileMenu === link.label}
                   >
@@ -181,20 +195,15 @@ export default function Navbar() {
 
                   <div className={`mobile-dropdown${openMobileMenu === link.label ? ' open' : ''}`}>
                     <div className="mobile-dropdown-inner">
-                      {link.dropdown.map((group) => (
-                        <div key={group.label}>
-                          <div className="mobile-dropdown-label">{group.label}</div>
-                          {group.sub?.map((s) => (
-                            <button
-                              key={s.label}
-                              className="mobile-sub-link"
-                              onClick={() => goTo(s.path)}
-                            >
-                              <span className="mobile-dot" />
-                              {s.label}
-                            </button>
-                          ))}
-                        </div>
+                      {link.dropdown.map((item) => (
+                        <button
+                          key={item.label}
+                          className={`mobile-sub-link${isActive(item.path) ? ' active' : ''}`}
+                          onClick={() => goTo(item.path)}
+                        >
+                          <span className="mobile-dot" />
+                          {item.label}
+                        </button>
                       ))}
                     </div>
                   </div>
@@ -212,7 +221,10 @@ export default function Navbar() {
         </nav>
 
         <div className="mobile-nav-footer">
-          <p>Prof. Hasan Phudinawala © 2024</p>
+          <button className="mobile-register-btn" onClick={() => goTo('/contact')}>
+            Register Now
+          </button>
+          <p>© {new Date().getFullYear()} Prof. Dr. T. N. Ghorude</p>
         </div>
       </aside>
     </>

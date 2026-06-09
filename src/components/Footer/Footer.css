@@ -34,6 +34,11 @@
   align-items: center;
   justify-content: center;
   color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
 }
 
 .footer-brand-name {
@@ -115,13 +120,19 @@
   gap: var(--space-lg);
 }
 
-.footer-bottom-links a {
+.footer-bottom-links a,
+.footer-bottom-links button {
   font-size: 0.78rem;
   color: var(--clr-text-faint);
   transition: var(--transition-fast);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-.footer-bottom-links a:hover {
+.footer-bottom-links a:hover,
+.footer-bottom-links button:hover {
   color: var(--clr-accent);
 }
 

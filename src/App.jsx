@@ -1,20 +1,28 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar      from './components/Navbar/Navbar';
-import Footer      from './components/Footer/Footer';
-import BackToTop   from './components/BackToTop/BackToTop';
-import ThemeToggle from './components/ThemeToggle/ThemeToggle';
-import HomePage         from './pages/HomePage/HomePage';
-import PublicationsPage from './pages/PublicationsPage/PublicationsPage';
-import CategoryPage     from './pages/CategoryPage/CategoryPage';
-import ContactPage      from './pages/ContactPage/ContactPage';
+import Navbar    from './components/Navbar/Navbar';
+import Footer    from './components/Footer/Footer';
+import BackToTop from './components/BackToTop/BackToTop';
+
+import HomePage              from './pages/HomePage/HomePage';
+import AboutPage             from './pages/AboutPage/AboutPage';
+import CredentialsPage       from './pages/CredentialsPage/CredentialsPage';
+import InstitutionalRolesPage from './pages/InstitutionalRolesPage/InstitutionalRolesPage';
+import PublicationsPage      from './pages/PublicationsPage/PublicationsPage';
+import PhDScholarsPage       from './pages/PhDScholarsPage/PhDScholarsPage';
+import ResearchProjectsPage  from './pages/ResearchProjectsPage/ResearchProjectsPage';
+import CareerTimelinePage    from './pages/CareerTimelinePage/CareerTimelinePage';
+import TrainingCoursesPage   from './pages/TrainingCoursesPage/TrainingCoursesPage';
+import GalleryPage           from './pages/GalleryPage/GalleryPage';
+import ContactPage           from './pages/ContactPage/ContactPage';
+
 import './index.css';
 
 // ── Layout wrapper ──────────────────────────────────────────────
-function Layout({ children }) {
+function Layout({ children, theme, onToggle }) {
   return (
     <>
-      <Navbar />
+      <Navbar theme={theme} onToggle={onToggle} />
       <div style={{ paddingTop: 'var(--navbar-h)' }}>
         {children}
       </div>
@@ -31,7 +39,6 @@ export default function App() {
     () => localStorage.getItem('pf-theme') || 'dark'
   );
 
-  // Apply class on <html> whenever theme changes
   useEffect(() => {
     const root = document.documentElement;
     root.className = theme;
@@ -43,41 +50,35 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Layout>
+      <Layout theme={theme} onToggle={toggleTheme}>
         <Routes>
-          {/* Home */}
+          {/* ── Home ────────────────────────────── */}
           <Route path="/" element={<HomePage />} />
 
-          {/* Contact */}
-          <Route path="/contact" element={<ContactPage />} />
+          {/* ── Profile Group ───────────────────── */}
+          <Route path="/about"              element={<AboutPage />} />
+          <Route path="/credentials"        element={<CredentialsPage />} />
+          <Route path="/institutional-roles" element={<InstitutionalRolesPage />} />
 
-          {/* Publications */}
-          <Route path="/publications" element={<PublicationsPage />} />
+          {/* ── Research & Guidance Group ────────── */}
+          <Route path="/publications"      element={<PublicationsPage />} />
+          <Route path="/phd-scholars"      element={<PhDScholarsPage />} />
+          <Route path="/research-projects" element={<ResearchProjectsPage />} />
 
-          {/* Category pages — wildcard parameter matching */}
-          {/* /category/:department */}
-          <Route
-            path="/category/:department"
-            element={<CategoryPage />}
-          />
-          {/* /category/:department/:year */}
-          <Route
-            path="/category/:department/:year"
-            element={<CategoryPage />}
-          />
-          {/* /category/:department/:year/:semester */}
-          <Route
-            path="/category/:department/:year/:semester"
-            element={<CategoryPage />}
-          />
+          {/* ── Professional Milestones Group ────── */}
+          <Route path="/career-timeline"   element={<CareerTimelinePage />} />
+          <Route path="/training-courses"  element={<TrainingCoursesPage />} />
 
-          {/* Catch-all — redirect to home */}
+          {/* ── Media Showcase ───────────────────── */}
+          <Route path="/gallery"           element={<GalleryPage />} />
+
+          {/* ── Contact ──────────────────────────── */}
+          <Route path="/contact"           element={<ContactPage />} />
+
+          {/* ── Catch-all redirect ────────────────── */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
-
-      {/* ── Floating Theme Toggle (bottom-left) ────────────────── */}
-      <ThemeToggle theme={theme} onToggle={toggleTheme} />
     </BrowserRouter>
   );
 }

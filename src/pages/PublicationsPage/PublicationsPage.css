@@ -13,12 +13,17 @@
 .publications-hero::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: var(--grad-glow);
   pointer-events: none;
 }
 
-.publications-hero .container { position: relative; }
+.publications-hero .container {
+  position: relative;
+}
 
 .pub-hero-badge {
   display: inline-flex;
@@ -26,8 +31,8 @@
   gap: var(--space-sm);
   padding: 5px 14px;
   border-radius: var(--radius-pill);
-  background: rgba(79,142,247,0.1);
-  border: 1px solid rgba(79,142,247,0.2);
+  background: rgba(79, 142, 247, 0.1);
+  border: 1px solid rgba(79, 142, 247, 0.2);
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--clr-accent);
@@ -90,7 +95,9 @@
   scrollbar-width: none;
 }
 
-.pub-tabs::-webkit-scrollbar { display: none; }
+.pub-tabs::-webkit-scrollbar {
+  display: none;
+}
 
 .pub-tab {
   display: flex;
@@ -108,7 +115,9 @@
   white-space: nowrap;
 }
 
-.pub-tab:hover { color: var(--clr-white); }
+.pub-tab:hover {
+  color: var(--clr-white);
+}
 
 .pub-tab.active {
   color: var(--clr-accent);
@@ -116,7 +125,7 @@
 }
 
 .pub-tab-count {
-  background: rgba(79,142,247,0.12);
+  background: rgba(79, 142, 247, 0.12);
   color: var(--clr-accent);
   border-radius: var(--radius-pill);
   padding: 1px 7px;
@@ -157,8 +166,8 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background: rgba(79,142,247,0.1);
-  border: 1px solid rgba(79,142,247,0.2);
+  background: rgba(79, 142, 247, 0.1);
+  border: 1px solid rgba(79, 142, 247, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,7 +178,7 @@
   flex-shrink: 0;
 }
 
-.journal-content {}
+/* .journal-content {} */
 
 .journal-title {
   font-size: 1rem;
@@ -227,7 +236,9 @@
   box-shadow: var(--shadow-md);
 }
 
-.conference-card:hover::before { opacity: 1; }
+.conference-card:hover::before {
+  opacity: 1;
+}
 
 .conference-type-badge {
   display: inline-flex;
@@ -237,9 +248,9 @@
   border-radius: var(--radius-pill);
   font-size: 0.7rem;
   font-weight: 600;
-  background: rgba(0,212,170,0.1);
+  background: rgba(0, 212, 170, 0.1);
   color: var(--clr-teal);
-  border: 1px solid rgba(0,212,170,0.2);
+  border: 1px solid rgba(0, 212, 170, 0.2);
   margin-bottom: var(--space-sm);
 }
 
@@ -271,10 +282,91 @@
   color: var(--clr-text-muted);
 }
 
-.conference-meta .sep { opacity: 0.3; }
+.conference-meta .sep {
+  opacity: 0.3;
+}
+
+/* ── Patents ─────────────────────────────────────────────────── */
+.patents-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.patent-card {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: var(--space-lg);
+  transition: var(--transition-base);
+}
+
+.patent-card:hover {
+  border-color: var(--clr-border-hover);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md), -4px 0 0 var(--clr-gold);
+}
+
+.patent-num {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(240, 180, 41, 0.1);
+  border: 1px solid rgba(240, 180, 41, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--clr-gold);
+  flex-shrink: 0;
+}
+
+.patent-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  margin-bottom: var(--space-sm);
+  line-height: 1.45;
+}
+
+.patent-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.patent-inventors {
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+  font-style: italic;
+}
 
 @media (max-width: 768px) {
-  .pub-counts { gap: var(--space-lg); flex-wrap: wrap; }
-  .journal-card { grid-template-columns: 1fr; }
-  .journal-num { display: none; }
+  .pub-counts {
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .journal-card {
+    grid-template-columns: 1fr;
+  }
+
+  .journal-num {
+    display: none;
+  }
+
+  .patent-card {
+    grid-template-columns: 1fr;
+  }
+
+  .patent-num {
+    display: none;
+  }
 }
