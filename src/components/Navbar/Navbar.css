@@ -63,6 +63,12 @@
   box-shadow: 0 0 14px rgba(90, 156, 248, 0.45);
   flex-shrink: 0;
   user-select: none;
+  overflow: hidden;
+}
+
+.navbar-brand-icon img {
+  scale: 1.6;
+  object-fit: cover;
 }
 
 .navbar-brand-text {

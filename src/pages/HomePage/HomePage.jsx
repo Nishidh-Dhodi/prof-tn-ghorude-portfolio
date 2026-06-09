@@ -7,6 +7,7 @@ import {
   PROFESSOR, KEY_STATS, RESEARCH_AREAS, PHD_SCHOLARS, JOURNAL_PUBLICATIONS
 } from '../../data/portfolioData';
 import './HomePage.css';
+import profileImage from "../../assets/Prof-Dr-T-N.png";
 
 // Atom icon map for research areas
 const AREA_ICONS = [
@@ -20,10 +21,10 @@ export default function HomePage() {
   return (
     <main>
       {/* ── Promo Banner ─────────────────────────────────────── */}
-      <div className="promo-banner" role="alert">
+      {/* <div className="promo-banner" role="alert">
         <p>🎓 {PROFESSOR.promoBanner}</p>
         <Link to={PROFESSOR.promoLink}>{PROFESSOR.promoLinkText}</Link>
-      </div>
+      </div> */}
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="hero" id="home">
@@ -71,7 +72,7 @@ export default function HomePage() {
               <div className="hero-avatar-glow" />
               <div className="hero-avatar-ring">
                 <div className="hero-avatar-inner">
-                  <div className="hero-avatar-initials">TG</div>
+                  <div className="hero-avatar-initials">{profileImage ? <img src={profileImage} alt="Profile" /> : "TG"}</div> {/* update with actual image if available */}
                 </div>
               </div>
               <div className="hero-badge-floating">

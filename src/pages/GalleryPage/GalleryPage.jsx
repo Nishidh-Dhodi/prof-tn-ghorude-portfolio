@@ -4,23 +4,23 @@ import { GALLERY_CATEGORIES, GALLERY_IMAGES } from '../../data/portfolioData';
 import './GalleryPage.css';
 
 const CATEGORY_EMOJIS = {
-  'award':      '🏆',
+  'award': '🏆',
   'book-cover': '📚',
-  'event':      '🎤',
+  'event': '🎤',
   'news-paper': '📰',
-  'photo':      '📷',
+  'photo': '📷',
 };
 
 // ── Lightbox Modal ────────────────────────────────────────────
 function Lightbox({ images, startIndex, onClose }) {
-  const [currentIndex, setCurrentIndex]   = useState(startIndex);
-  const [isFullscreen, setIsFullscreen]   = useState(false);
-  const [imgLoaded,    setImgLoaded]      = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(startIndex);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
   const modalRef = useRef(null);
 
   const currentImage = images[currentIndex];
-  const isFirst      = currentIndex === 0;
-  const isLast       = currentIndex === images.length - 1;
+  const isFirst = currentIndex === 0;
+  const isLast = currentIndex === images.length - 1;
 
   /* ── Navigation ─────────────────────────────────────────── */
   const goPrev = useCallback(() => {
@@ -40,9 +40,9 @@ function Lightbox({ images, startIndex, onClose }) {
   /* ── Keyboard navigation ─────────────────────────────────── */
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'ArrowLeft')  goPrev();
+      if (e.key === 'ArrowLeft') goPrev();
       if (e.key === 'ArrowRight') goNext();
-      if (e.key === 'Escape')     onClose();
+      if (e.key === 'Escape') onClose();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -60,9 +60,9 @@ function Lightbox({ images, startIndex, onClose }) {
     const el = modalRef.current;
     if (!el) return;
     if (!document.fullscreenElement) {
-      try { await el.requestFullscreen(); } catch (_) {}
+      try { await el.requestFullscreen(); } catch (_) { }
     } else {
-      try { await document.exitFullscreen(); } catch (_) {}
+      try { await document.exitFullscreen(); } catch (_) { }
     }
   }, []);
 
@@ -97,14 +97,14 @@ function Lightbox({ images, startIndex, onClose }) {
 
         <div className="lightbox-top-actions">
           {/* Fullscreen toggle */}
-          <button
+          {/* <button
             className="lightbox-ctrl-btn lightbox-fs-btn"
             onClick={toggleFullscreen}
             aria-label={isFullscreen ? 'Exit full screen' : 'Enter full screen'}
             title={isFullscreen ? 'Exit full screen' : 'Full screen'}
           >
             {isFullscreen ? <Minimize size={18} /> : <Maximize size={18} />}
-          </button>
+          </button> */}
 
           {/* Close */}
           <button
@@ -208,7 +208,7 @@ function GalleryItem({ img, onClick }) {
 // ── Main Gallery Page ─────────────────────────────────────────
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState(null);
-  const [lightbox, setLightbox]             = useState(null); // { images, startIndex }
+  const [lightbox, setLightbox] = useState(null); // { images, startIndex }
 
   /* Images visible under the current filter */
   const visibleImages = activeCategory
@@ -225,7 +225,7 @@ export default function GalleryPage() {
   const closeLightbox = useCallback(() => {
     // exit fullscreen if open when closing
     if (document.fullscreenElement) {
-      document.exitFullscreen().catch(() => {});
+      document.exitFullscreen().catch(() => { });
     }
     setLightbox(null);
   }, []);
@@ -338,7 +338,7 @@ export default function GalleryPage() {
             ) : (
               /* ── Single-category filtered view ─────────────────── */
               (() => {
-                const cat      = GALLERY_CATEGORIES.find((c) => c.id === activeCategory);
+                const cat = GALLERY_CATEGORIES.find((c) => c.id === activeCategory);
                 const catImages = GALLERY_IMAGES.filter(
                   (img) => img.category === activeCategory
                 );
