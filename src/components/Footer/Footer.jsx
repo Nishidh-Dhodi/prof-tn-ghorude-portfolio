@@ -1,7 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import { Mail, Atom } from 'lucide-react';
-import { NAV_LINKS, PROFESSOR } from '../../data/portfolioData';
-import './Footer.css';
+import { useNavigate } from "react-router-dom";
+import { Mail, Atom } from "lucide-react";
+import { NAV_LINKS, PROFESSOR } from "../../data/portfolioData";
+import "./Footer.css";
+import profileImage from "../../assets/Prof-Dr-T-N-profile.jpg";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -11,17 +12,17 @@ export default function Footer() {
   const flatLinks = NAV_LINKS.reduce((acc, link) => {
     acc.push({ label: link.label, path: link.path });
     if (link.dropdown) {
-      link.dropdown.forEach(d => acc.push({ label: d.label, path: d.path }));
+      link.dropdown.forEach((d) => acc.push({ label: d.label, path: d.path }));
     }
     return acc;
   }, []);
 
-  const primaryLinks = NAV_LINKS.map(l => ({ label: l.label, path: l.path }));
+  const primaryLinks = NAV_LINKS.map((l) => ({ label: l.label, path: l.path }));
   const researchLinks = [
-    { label: 'Publications',              path: '/publications' },
-    { label: 'Ph.D. Scholars Supervised', path: '/phd-scholars' },
-    { label: 'Research Projects',         path: '/research-projects' },
-    { label: 'Patents',                   path: '/publications' },
+    { label: "Publications", path: "/publications" },
+    { label: "Ph.D. Scholars Supervised", path: "/phd-scholars" },
+    { label: "Research Projects", path: "/research-projects" },
+    { label: "Patents", path: "/publications" },
   ];
 
   return (
@@ -31,13 +32,16 @@ export default function Footer() {
           {/* ── Brand ─────────────────────────────────────── */}
           <div className="footer-brand">
             <div className="footer-brand-logo">
-              <div className="footer-brand-icon">TG</div>
+              <div className="footer-brand-icon">
+                {profileImage ? <img src={profileImage} alt="Profile" /> : "TG"}
+              </div>
               <span className="footer-brand-name">Prof. Dr. T. N. Ghorude</span>
             </div>
             <p className="footer-bio">
-              Vice-Principal &amp; Head, Department of Physics at Rajiv Gandhi College
-              of Arts, Science &amp; Commerce, Mumbai. Dedicated to advancing physics
-              research in polymer composites, gas sensors, and colorimetry.
+              Principal at Dnyandeep Mandal's St. Joseph College of Arts and
+              Commerce, Satpala, Rajodi Road, Virar (West). Dedicated to
+              advancing physics research in polymer composites, gas sensors, and
+              colorimetry.
             </p>
             <a
               href={`mailto:${PROFESSOR.email}`}
@@ -78,10 +82,16 @@ export default function Footer() {
                   {link.label}
                 </button>
               ))}
-              <button className="footer-link" onClick={() => navigate('/career-timeline')}>
+              <button
+                className="footer-link"
+                onClick={() => navigate("/career-timeline")}
+              >
                 Career Timeline
               </button>
-              <button className="footer-link" onClick={() => navigate('/contact')}>
+              <button
+                className="footer-link"
+                onClick={() => navigate("/contact")}
+              >
                 Contact
               </button>
             </div>
@@ -91,11 +101,14 @@ export default function Footer() {
         {/* ── Bottom Bar ────────────────────────────────────── */}
         <div className="footer-bottom">
           <p className="footer-copyright">
-            © {year} Prof. Dr. T. N. Ghorude · Rajiv Gandhi College of Arts, Science &amp; Commerce, Mumbai
+            © {year} Prof. Dr. T. N. Ghorude · Dnyandeep Mandal's St. Joseph
+            College of Arts and Commerce, Virar (West)
           </p>
           <div className="footer-bottom-links">
             <a href={`mailto:${PROFESSOR.email}`}>Contact</a>
-            <button onClick={() => navigate('/phd-scholars')}>Ph.D. Scholars</button>
+            <button onClick={() => navigate("/phd-scholars")}>
+              Ph.D. Scholars
+            </button>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import {
   PROFESSOR, RESEARCH_AREAS, KEY_STATS, INSTITUTIONAL_ROLES
 } from '../../data/portfolioData';
 import './AboutPage.css';
+import profileImage from "../../assets/Prof-Dr-T-N-profile.jpg";
 
 const AREA_ICONS = [
   <Atom size={16} />, <FlaskConical size={16} />, <Microscope size={16} />,
@@ -25,7 +26,7 @@ export default function AboutPage() {
           </div>
           <h1>About <span className="gradient-text">Prof. Dr. T. N. Ghorude</span></h1>
           <p>
-            Vice-Principal &amp; Head of Physics — Rajiv Gandhi College of Arts, Science &amp; Commerce
+            Principal — Dnyandeep Mandal's St. Joseph College of Arts and Commerce, Virar (West)
           </p>
         </div>
       </section>
@@ -37,7 +38,9 @@ export default function AboutPage() {
             {/* ── Left — Avatar + Quick Info ─── */}
             <div className="about-sidebar animate-fadeInUp">
               <div className="about-avatar-card">
-                <div className="about-avatar-circle">TG</div>
+                <div className="about-avatar-circle">
+                  {profileImage ? <img src={profileImage} alt="Profile" /> : "TG"}
+                  </div>
                 <h2 className="about-avatar-name">{PROFESSOR.name}</h2>
                 <p className="about-avatar-title">{PROFESSOR.title}</p>
                 <p className="about-avatar-inst">{PROFESSOR.institution}</p>

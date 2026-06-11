@@ -34,7 +34,7 @@ export default function HomePage() {
             <div className="hero-content animate-fadeInUp">
               <div className="hero-status">
                 <span className="status-dot" />
-                Vice-Principal &amp; Head · Physics Dept.
+                Principal · St. Joseph College
               </div>
 
               <h1 className="hero-title">
@@ -85,8 +85,8 @@ export default function HomePage() {
               <div className="hero-badge-floating-2">
                 <div className="badge-icon">🏛️</div>
                 <div className="badge-text">
-                  <strong>Vice-Principal</strong>
-                  <span>Rajiv Gandhi College</span>
+                  <strong>Principal</strong>
+                  <span>St. Joseph College, Virar</span>
                 </div>
               </div>
             </div>

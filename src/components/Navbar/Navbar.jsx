@@ -3,7 +3,7 @@ import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '../../data/portfolioData';
 import './Navbar.css';
-import profileImage from "../../assets/Prof-Dr-T-N.png";
+import profileImage from "../../assets/Prof-Dr-T-N-profile.jpg";
 
 export default function Navbar({ theme, onToggle }) {
   const [scrolled,       setScrolled]       = useState(false);
@@ -58,7 +58,7 @@ export default function Navbar({ theme, onToggle }) {
             </div>
             <div className="navbar-brand-text">
               <span className="navbar-brand-name">Prof. Dr. T. N. Ghorude</span>
-              <span className="navbar-brand-title">Vice-Principal &amp; Head, Physics</span>
+              <span className="navbar-brand-title">Principal</span>
             </div>
           </a>
 
@@ -167,7 +167,7 @@ export default function Navbar({ theme, onToggle }) {
             <div className="navbar-brand-icon" aria-hidden="true">TG</div>
             <div className="navbar-brand-text">
               <span className="navbar-brand-name">Dr. T. N. Ghorude</span>
-              <span className="navbar-brand-title">Physics Dept.</span>
+              <span className="navbar-brand-title">Principal</span>
             </div>
           </div>
           <button

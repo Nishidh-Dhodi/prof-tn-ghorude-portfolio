@@ -36,7 +36,7 @@ function Layout({ children, theme, onToggle }) {
 export default function App() {
   // ── Theme state (persisted in localStorage) ──────────────────
   const [theme, setTheme] = useState(
-    () => localStorage.getItem('pf-theme') || 'dark'
+    () => localStorage.getItem('pf-theme') || 'light'
   );
 
   useEffect(() => {

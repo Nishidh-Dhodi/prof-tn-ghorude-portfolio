@@ -99,7 +99,7 @@ export default function CredentialsPage() {
           <div className="highlights-grid animate-fadeInUp">
             <div className="highlight-card">
               <Award size={28} className="highlight-icon" />
-              <h4>Ph.D. from University of Mumbai</h4>
+              <h4>Ph.D. from University of Pune</h4>
               <p>Doctoral thesis on Polypyrrole and its Composites, awarded in 2003. Research laid the foundation for a prolific career in conducting polymer sensors.</p>
             </div>
             <div className="highlight-card">
@@ -110,7 +110,7 @@ export default function CredentialsPage() {
             <div className="highlight-card">
               <Award size={28} className="highlight-icon" />
               <h4>32+ Years of Academic Service</h4>
-              <p>Uninterrupted dedication to physics education at Rajiv Gandhi College since 1992, currently serving as Vice-Principal & Head of Physics.</p>
+              <p>Uninterrupted dedication to physics education since 1992, now serving as Principal at Dnyandeep Mandal's St. Joseph College of Arts and Commerce, Virar (West).</p>
             </div>
             <div className="highlight-card">
               <Award size={28} className="highlight-icon" />

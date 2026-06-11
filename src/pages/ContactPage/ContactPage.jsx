@@ -157,6 +157,17 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* ── Office Address ── */}
+              <div className="cip-block">
+                <div className="cip-block-label">
+                  <MapPin size={13} />
+                  Office Address
+                </div>
+                <div className="cip-institution-dept" style={{ lineHeight: '1.6' }}>
+                  {CONTACT_DETAILS.address}
+                </div>
+              </div>
+
               {/* ── Social Platforms ── */}
               <div className="cip-block">
                 <div className="cip-block-label">

@@ -1,22 +1,93 @@
 import { useState } from 'react';
-import { BookOpen, FileText, Award, Calendar, Bookmark, FlaskConical } from 'lucide-react';
 import {
-  JOURNAL_PUBLICATIONS, CONFERENCE_PUBLICATIONS, PATENTS
+  BookOpen,
+  FileText,
+  Award,
+  Globe,
+  FlaskConical,
+  Bookmark,
+  Calendar,
+} from 'lucide-react';
+import {
+  internationalJournals,
+  internationalConferences,
+  nationalJournalsAndConferences,
+  PATENTS,
 } from '../../data/portfolioData';
 import './PublicationsPage.css';
 
-const TABS = [
-  { id: 'journals',    label: 'Journal Papers',   icon: <FileText size={15} />,    count: JOURNAL_PUBLICATIONS.length },
-  { id: 'conferences', label: 'Conference Papers', icon: <Award size={15} />,       count: CONFERENCE_PUBLICATIONS.length },
-  { id: 'patents',     label: 'Patents',           icon: <FlaskConical size={15} />, count: PATENTS.length },
+// ── Merged pool (used by the "All" tab) ──────────────────────
+const ALL_PUBLICATIONS = [
+  ...internationalJournals,
+  ...internationalConferences,
+  ...nationalJournalsAndConferences,
 ];
 
+// ── Tab configuration ─────────────────────────────────────────
+const TABS = [
+  {
+    id:    'all',
+    label: 'All Publications',
+    icon:  <BookOpen size={15} />,
+    count: ALL_PUBLICATIONS.length,
+  },
+  {
+    id:    'intl-journals',
+    label: 'International Journals',
+    icon:  <FileText size={15} />,
+    count: internationalJournals.length,
+  },
+  {
+    id:    'intl-conferences',
+    label: 'International Conferences',
+    icon:  <Globe size={15} />,
+    count: internationalConferences.length,
+  },
+  {
+    id:    'national',
+    label: 'National Journals & Conferences',
+    icon:  <Award size={15} />,
+    count: nationalJournalsAndConferences.length,
+  },
+  {
+    id:    'patents',
+    label: 'Patents',
+    icon:  <FlaskConical size={15} />,
+    count: PATENTS.length,
+  },
+];
+
+// ── Reusable publication card for journal/conference entries ──
+function PubCard({ pub, index }) {
+  return (
+    <div key={pub.id} className="journal-card">
+      <div className="journal-num">{String(index + 1).padStart(2, '0')}</div>
+      <div className="journal-content">
+        <div className="journal-title">{pub.title}</div>
+        <div className="journal-authors">{pub.authors}</div>
+        <div className="journal-meta">
+          <span className="journal-name">{pub.source}</span>
+        </div>
+        <div className="journal-badges">
+          {pub.impactFactor && (
+            <span className="badge badge-teal">IF: {pub.impactFactor}</span>
+          )}
+          {pub.issn && (
+            <span className="badge badge-purple">ISSN: {pub.issn}</span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Main component ────────────────────────────────────────────
 export default function PublicationsPage() {
-  const [activeTab, setActiveTab] = useState('journals');
+  const [activeTab, setActiveTab] = useState('all');
 
   return (
     <main>
-      {/* ── Hero ─────────────────────────────────────────────── */}
+      {/* ── Hero ─────────────────────────────────────────── */}
       <section className="publications-hero">
         <div className="container animate-fadeInUp">
           <div className="pub-hero-badge">
@@ -27,8 +98,8 @@ export default function PublicationsPage() {
             Publications &amp; <span className="gradient-text">Research Output</span>
           </h1>
           <p>
-            A curated collection of peer-reviewed journal papers, conference
-            presentations, and patents in Polymer Physics, Gas Sensors,
+            A comprehensive collection of {internationalJournals.length + internationalConferences.length + nationalJournalsAndConferences.length} peer-reviewed works — international &amp; national journal papers,
+            conference presentations, and patents in Polymer Physics, Gas Sensors,
             Nanocomposites, and Colorimetry.
           </p>
           <div className="pub-counts">
@@ -42,7 +113,7 @@ export default function PublicationsPage() {
         </div>
       </section>
 
-      {/* ── Tabs ─────────────────────────────────────────────── */}
+      {/* ── Tabs ─────────────────────────────────────────── */}
       <div className="pub-tabs-section">
         <div className="container">
           <div className="pub-tabs" role="tablist" aria-label="Publication categories">
@@ -64,53 +135,49 @@ export default function PublicationsPage() {
         </div>
       </div>
 
-      {/* ── Body ─────────────────────────────────────────────── */}
+      {/* ── Body ─────────────────────────────────────────── */}
       <section className="section publications-body">
         <div className="container">
 
-          {/* ── Journal Papers ─────────────────────────────── */}
-          {activeTab === 'journals' && (
-            <div className="journal-list animate-fadeIn" role="tabpanel">
-              {JOURNAL_PUBLICATIONS.map((pub, i) => (
-                <div key={pub.id} className="journal-card">
-                  <div className="journal-num">{String(i + 1).padStart(2, '0')}</div>
-                  <div className="journal-content">
-                    <div className="journal-title">{pub.title}</div>
-                    <div className="journal-meta">
-                      <span className="journal-name">{pub.journal}</span>
-                      <span className="badge">{pub.year}</span>
-                      {pub.authors && (
-                        <span className="badge badge-teal">{pub.authors}</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
+          {/* ── All Publications ──────────────────────── */}
+          {activeTab === 'all' && (
+            <div className="journal-list animate-fadeIn" role="tabpanel" aria-labelledby="pub-tab-all">
+              {ALL_PUBLICATIONS.map((pub, i) => (
+                <PubCard key={`pub-${pub.id}-${i}`} pub={pub} index={i} />
               ))}
             </div>
           )}
 
-          {/* ── Conference Papers ───────────────────────────── */}
-          {activeTab === 'conferences' && (
-            <div className="conference-list animate-fadeIn" role="tabpanel">
-              {CONFERENCE_PUBLICATIONS.map((pub) => (
-                <div key={pub.id} className="conference-card">
-                  <span className="conference-type-badge">{pub.type}</span>
-                  <div className="conference-title">{pub.title}</div>
-                  <div className="conference-theme">{pub.theme}</div>
-                  <div className="conference-meta">
-                    <span>{pub.organizer}</span>
-                    <span className="sep">·</span>
-                    <Calendar size={12} style={{ opacity: 0.5 }} />
-                    <span>{pub.date}</span>
-                  </div>
-                </div>
+          {/* ── International Journal Papers ───────────── */}
+          {activeTab === 'intl-journals' && (
+            <div className="journal-list animate-fadeIn" role="tabpanel" aria-labelledby="pub-tab-intl-journals">
+              {internationalJournals.map((pub, i) => (
+                <PubCard key={pub.id} pub={pub} index={i} />
               ))}
             </div>
           )}
 
-          {/* ── Patents ─────────────────────────────────────── */}
+          {/* ── International Conference Papers ────────── */}
+          {activeTab === 'intl-conferences' && (
+            <div className="journal-list animate-fadeIn" role="tabpanel" aria-labelledby="pub-tab-intl-conferences">
+              {internationalConferences.map((pub, i) => (
+                <PubCard key={pub.id} pub={pub} index={i} />
+              ))}
+            </div>
+          )}
+
+          {/* ── National Journals & Conferences ────────── */}
+          {activeTab === 'national' && (
+            <div className="journal-list animate-fadeIn" role="tabpanel" aria-labelledby="pub-tab-national">
+              {nationalJournalsAndConferences.map((pub, i) => (
+                <PubCard key={pub.id} pub={pub} index={i} />
+              ))}
+            </div>
+          )}
+
+          {/* ── Patents ──────────────────────────────────── */}
           {activeTab === 'patents' && (
-            <div className="patents-list animate-fadeIn" role="tabpanel">
+            <div className="patents-list animate-fadeIn" role="tabpanel" aria-labelledby="pub-tab-patents">
               {PATENTS.map((patent, i) => (
                 <div key={patent.id} className="patent-card">
                   <div className="patent-num">{String(i + 1).padStart(2, '0')}</div>
