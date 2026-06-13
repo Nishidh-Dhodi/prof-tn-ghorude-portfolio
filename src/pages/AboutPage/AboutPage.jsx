@@ -21,12 +21,24 @@ export default function AboutPage() {
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="page-hero">
         <div className="container animate-fadeInUp">
-          <div className="section-label" style={{ justifyContent: 'center', marginBottom: '1rem' }}>
+          <div
+            className="section-label"
+            style={{ justifyContent: "center", marginBottom: "1rem" }}
+          >
             Profile
           </div>
-          <h1>About <span className="gradient-text">Prof. Dr. T. N. Ghorude</span></h1>
+          <h1>
+            About <span className="gradient-text">Prof. Dr. T. N. Ghorude</span>
+          </h1>
           <p>
-            Principal — Dnyandeep Mandal's St. Joseph College of Arts and Commerce, Virar (West)
+            Principal — Dnyandeep Mandal's St. Joseph College of Arts and
+            Commerce, Virar (West)
+          </p>
+          <p>
+            Ex-Principal & HOD of Dept. of Physics N.B.Mehta Science College, Bordi
+          </p>
+          <p>
+            Chairman - Board of study (Physics) Univercity of Mumbai
           </p>
         </div>
       </section>
@@ -39,8 +51,12 @@ export default function AboutPage() {
             <div className="about-sidebar animate-fadeInUp">
               <div className="about-avatar-card">
                 <div className="about-avatar-circle">
-                  {profileImage ? <img src={profileImage} alt="Profile" /> : "TG"}
-                  </div>
+                  {profileImage ? (
+                    <img src={profileImage} alt="Profile" />
+                  ) : (
+                    "TG"
+                  )}
+                </div>
                 <h2 className="about-avatar-name">{PROFESSOR.name}</h2>
                 <p className="about-avatar-title">{PROFESSOR.title}</p>
                 <p className="about-avatar-inst">{PROFESSOR.institution}</p>
@@ -52,7 +68,10 @@ export default function AboutPage() {
                     </div>
                   ))}
                 </div>
-                <a href={`mailto:${PROFESSOR.email}`} className="btn btn-primary about-email-btn">
+                <a
+                  href={`mailto:${PROFESSOR.email}`}
+                  className="btn btn-primary about-email-btn"
+                >
                   Contact Professor
                 </a>
               </div>
@@ -61,9 +80,7 @@ export default function AboutPage() {
             {/* ── Right — Bio + Areas ─────────── */}
             <div className="about-main-content animate-fadeInUp animate-delay-2">
               <div className="about-quote">
-                <blockquote>
-                  "{PROFESSOR.tagline}"
-                </blockquote>
+                <blockquote>"{PROFESSOR.tagline}"</blockquote>
               </div>
 
               <div className="about-section-block">
@@ -76,7 +93,9 @@ export default function AboutPage() {
                 <div className="about-areas-grid">
                   {RESEARCH_AREAS.map((area, i) => (
                     <div key={area} className="about-area-chip">
-                      <span className="area-chip-icon">{AREA_ICONS[i % AREA_ICONS.length]}</span>
+                      <span className="area-chip-icon">
+                        {AREA_ICONS[i % AREA_ICONS.length]}
+                      </span>
                       {area}
                     </div>
                   ))}
@@ -84,13 +103,25 @@ export default function AboutPage() {
               </div>
 
               <div className="about-links-row">
-                <Link to="/credentials" className="btn btn-outline" id="about-creds-btn">
+                <Link
+                  to="/credentials"
+                  className="btn btn-outline"
+                  id="about-creds-btn"
+                >
                   Academic Credentials <ChevronRight size={14} />
                 </Link>
-                <Link to="/institutional-roles" className="btn btn-outline" id="about-roles-btn">
+                <Link
+                  to="/institutional-roles"
+                  className="btn btn-outline"
+                  id="about-roles-btn"
+                >
                   Institutional Roles <ChevronRight size={14} />
                 </Link>
-                <Link to="/publications" className="btn btn-outline" id="about-pubs-btn">
+                <Link
+                  to="/publications"
+                  className="btn btn-outline"
+                  id="about-pubs-btn"
+                >
                   Publications <ChevronRight size={14} />
                 </Link>
               </div>

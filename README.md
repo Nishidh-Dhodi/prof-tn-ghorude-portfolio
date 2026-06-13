@@ -1,6 +1,6 @@
 # Professional Portfolio - Prof. Dr. T. N. Ghorude
 
-This is a professional academic portfolio web application built for Prof. Dr. T. N. Ghorude, Vice-Principal & Head of the Department of Physics at Rajiv Gandhi College of Arts, Science & Commerce, Mumbai. It showcases his distinguished academic journey, research publications, awards, and career milestones.
+This is a professional academic portfolio web application built for Prof. Dr. T. N. Ghorude, Vice-Principal & Head of the Department of Physics at St. Joseph College of Arts, Science & Commerce, Mumbai. It showcases his distinguished academic journey, research publications, awards, and career milestones.
 
 ## 🚀 Tech Stack
 
@@ -22,34 +22,36 @@ This is a professional academic portfolio web application built for Prof. Dr. T.
 
 ## 🔄 Data Flow & State Management
 
-The application utilizes a centralized data architecture to separate content from presentation logic. Instead of hardcoding text into React components or relying on an external database/API, all portfolio content is managed within a single data file (`src/data/portfolioData.js`). 
+The application utilizes a centralized data architecture to separate content from presentation logic. Instead of hardcoding text into React components or relying on an external database/API, all portfolio content is managed within a single data file (`src/data/portfolioData.js`).
 
 This approach makes it incredibly simple to update the portfolio (e.g., adding a new publication or a new award) without needing to touch the UI code.
 
 ### How Data is Fetched and Displayed
 
-The data is exported as structured JavaScript constants (Objects and Arrays). React components directly import the required data modules and use the `.map()` function to render lists dynamically. 
+The data is exported as structured JavaScript constants (Objects and Arrays). React components directly import the required data modules and use the `.map()` function to render lists dynamically.
 
 **Example Code:**
 
-*1. Centralized Data (`src/data/portfolioData.js`):*
+_1. Centralized Data (`src/data/portfolioData.js`):_
+
 ```javascript
 export const RESEARCH_PROJECTS = [
   {
-    id: 'rp1',
-    title: 'Synthesis and Characterization of Polypyrrole-Metal Nanocomposites',
-    type: 'Minor Research Project',
-    fundedBy: 'BCUD, University of Mumbai',
-    status: 'Completed',
+    id: "rp1",
+    title: "Synthesis and Characterization of Polypyrrole-Metal Nanocomposites",
+    type: "Minor Research Project",
+    fundedBy: "BCUD, University of Mumbai",
+    status: "Completed",
   },
   // ...more projects
 ];
 ```
 
-*2. Component Rendering (`src/pages/ResearchProjectsPage/ResearchProjectsPage.jsx`):*
+_2. Component Rendering (`src/pages/ResearchProjectsPage/ResearchProjectsPage.jsx`):_
+
 ```javascript
-import React from 'react';
-import { RESEARCH_PROJECTS } from '../../data/portfolioData';
+import React from "react";
+import { RESEARCH_PROJECTS } from "../../data/portfolioData";
 
 export default function ResearchProjectsPage() {
   return (
@@ -59,8 +61,12 @@ export default function ResearchProjectsPage() {
         {RESEARCH_PROJECTS.map((project) => (
           <div key={project.id} className="project-card">
             <h3>{project.title}</h3>
-            <p><strong>Type:</strong> {project.type}</p>
-            <p><strong>Funded By:</strong> {project.fundedBy}</p>
+            <p>
+              <strong>Type:</strong> {project.type}
+            </p>
+            <p>
+              <strong>Funded By:</strong> {project.fundedBy}
+            </p>
             <span className="status-badge">{project.status}</span>
           </div>
         ))}
