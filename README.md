@@ -7,7 +7,7 @@ A premium, comprehensive digital portfolio designed for **Prof. Dr. T. N. Ghorud
 ---
 
 ## 🔗 Live Demo
-**[View Live Project Here]((#) "Add your deployment link here")** *(Placeholder)*
+**[View Live Project Here](https://prof-ghorude-tatyarao-namdevrao.netlify.app/)**
 
 ---
 
