@@ -1,84 +1,85 @@
-# Professional Portfolio - Prof. Dr. T. N. Ghorude
+# Prof. Dr. T. N. Ghorude - Academic & Research Portfolio
 
-This is a professional academic portfolio web application built for Prof. Dr. T. N. Ghorude, Vice-Principal & Head of the Department of Physics at St. Joseph College of Arts, Science & Commerce, Mumbai. It showcases his distinguished academic journey, research publications, awards, and career milestones.
+<!-- Banner Image Placeholder: ![Project Banner](./docs/banner.png) -->
 
-## 🚀 Tech Stack
+A premium, comprehensive digital portfolio designed for **Prof. Dr. T. N. Ghorude**, Principal at Dnyandeep Mandal's St. Joseph College of Arts and Commerce. This academic and research identity platform showcases his academic journey, vast research publications, and professional achievements with an executive-level UI/UX.
 
-- **React 19** - UI Library
-- **Vite** - Fast frontend build tool
-- **React Router DOM v7** - Client-side routing
-- **Lucide React** - Icon library
-- **Vanilla CSS** - Custom styling with CSS variables for theming
+---
 
-## ✨ Features
+## 🔗 Live Demo
+**[View Live Project Here]((#) "Add your deployment link here")** *(Placeholder)*
 
-- **Responsive Design**: Fully responsive layout that works beautifully across all devices.
-- **Dark/Light Mode**: User-toggleable theme with preferences saved to local storage.
-- **Profile Details**: Sections for About, Academic Credentials, and Institutional Roles.
-- **Research & Guidance**: Showcase of Publications, Ph.D. Scholars supervised, and Funded Research Projects.
-- **Professional Milestones**: Interactive Career Timeline and Training Courses.
-- **Media Gallery**: Image gallery categorized by events, awards, and book covers, featuring a custom full-screen Lightbox.
-- **Contact**: Contact information and quick links to ResearchGate and Google Scholar.
+---
 
-## 🔄 Data Flow & State Management
+## ✨ Key Features
 
-The application utilizes a centralized data architecture to separate content from presentation logic. Instead of hardcoding text into React components or relying on an external database/API, all portfolio content is managed within a single data file (`src/data/portfolioData.js`).
+- **📊 Dynamic Publications Hub:** A highly interactive and filterable research database displaying over 55+ papers. Users can seamlessly filter publications by *International Journals*, *Conferences*, *National Publications*, or view all of them in a merged feed.
+- **🖼️ Custom Lightbox Gallery:** A bespoke, responsive image gallery built with a full-screen slider using native browser APIs. Features categorized albums (Awards, Events, etc.) and infinite-scroll/boundary-disabled navigation for a fluid browsing experience.
+- **🎓 Training & Courses Module:** Interactive cards showcasing Refresher Courses, Seminars, and Workshops, utilizing a custom color-coded badge system for quick visual distinction.
+- **💎 Executive UI/UX:** Built with a premium aesthetic featuring custom SVG monograms, modern glass-morphism effects, dynamic hover states, and smooth gap-bridged navigation.
 
-This approach makes it incredibly simple to update the portfolio (e.g., adding a new publication or a new award) without needing to touch the UI code.
+---
 
-### How Data is Fetched and Displayed
+## 🛠️ Tech Stack
 
-The data is exported as structured JavaScript constants (Objects and Arrays). React components directly import the required data modules and use the `.map()` function to render lists dynamically.
+- **Frontend Framework:** [React.js](https://reactjs.org/) (Bootstrapped with [Vite](https://vitejs.dev/) for blazing-fast performance)
+- **Styling:** Custom Vanilla CSS / CSS Variables (Includes full Dark/Light theme support)
+- **Data Management:** Local JSON / JavaScript data structures (Stateless architecture without external database dependencies)
 
-**Example Code:**
+---
 
-_1. Centralized Data (`src/data/portfolioData.js`):_
+## 🚀 Local Installation & Setup
 
-```javascript
-export const RESEARCH_PROJECTS = [
-  {
-    id: "rp1",
-    title: "Synthesis and Characterization of Polypyrrole-Metal Nanocomposites",
-    type: "Minor Research Project",
-    fundedBy: "BCUD, University of Mumbai",
-    status: "Completed",
-  },
-  // ...more projects
-];
+To get this project running locally on your machine, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Nishidh-Dhodi/prof-tn-ghorude-portfolio.git
+   cd prof-portfolio
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📁 Folder Structure
+
+The project follows a modular structure. Crucially, all the portfolio content is localized in the `src/data` folder to allow easy updates without touching the UI components.
+
+```text
+prof-portfolio/
+├── public/                 # Static assets (favicons, manifest, etc.)
+├── src/
+│   ├── assets/             # Images, SVGs, and other media
+│   ├── components/         # Reusable UI components (Buttons, Cards, Lightbox)
+│   ├── data/               # 📂 Data layer (portfolioData.js/json) - UPDATE CONTENT HERE
+│   ├── pages/              # Page components (HomePage, ContactPage, etc.)
+│   ├── App.jsx             # Main application component
+│   ├── index.css           # Global CSS variables and base styles
+│   └── main.jsx            # Application entry point
+├── package.json            # Dependencies and scripts
+└── vite.config.js          # Vite configuration
 ```
 
-_2. Component Rendering (`src/pages/ResearchProjectsPage/ResearchProjectsPage.jsx`):_
+---
 
-```javascript
-import React from "react";
-import { RESEARCH_PROJECTS } from "../../data/portfolioData";
+## 📄 Contact
 
-export default function ResearchProjectsPage() {
-  return (
-    <section className="projects-section">
-      <h2>Research Projects</h2>
-      <div className="projects-grid">
-        {RESEARCH_PROJECTS.map((project) => (
-          <div key={project.id} className="project-card">
-            <h3>{project.title}</h3>
-            <p>
-              <strong>Type:</strong> {project.type}
-            </p>
-            <p>
-              <strong>Funded By:</strong> {project.fundedBy}
-            </p>
-            <span className="status-badge">{project.status}</span>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-```
+**Contact:**
+- **Developer:** [Nishidh S. Dhodi](https://github.com/Nishidh-Dhodi)
+- **Client:** Chinmiya Mam
 
-## 🛠️ Local Development
-
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Start the dev server: `npm run dev`
-4. Build for production: `npm run build`
+For any inquiries or to report an issue, please open an issue on the repository or reach out directly.
