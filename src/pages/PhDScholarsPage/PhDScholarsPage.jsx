@@ -1,4 +1,4 @@
-import { Users, Atom, CheckCircle } from 'lucide-react';
+import { Users, Atom, CheckCircle, Target } from 'lucide-react';
 import { PHD_SCHOLARS, PROFESSOR } from '../../data/portfolioData';
 import './PhDScholarsPage.css';
 
@@ -74,7 +74,7 @@ export default function PhDScholarsPage() {
                     <td className="scholar-topic">{scholar.topic}</td>
                     <td>
                       <span className="scholar-status-badge">
-                        <CheckCircle size={13} />
+                        {scholar.status === "Pursuing" ? <Target size={13} /> : <CheckCircle size={13} />}
                         {scholar.status}
                       </span>
                     </td>
@@ -97,7 +97,7 @@ export default function PhDScholarsPage() {
                     <div className="scholar-card-name">{scholar.name}</div>
                   </div>
                   <span className="scholar-status-badge">
-                    <CheckCircle size={12} />
+                    {scholar.status === "Pursuing" ? <Target size={12} /> : <CheckCircle size={12} />}
                     {scholar.status}
                   </span>
                 </div>

@@ -60,7 +60,7 @@ export default function CredentialsPage() {
                     </td>
                     <td>
                       {cred.thesis ? (
-                        <span className="cred-thesis">Thesis: {cred.thesis}</span>
+                        <span className="cred-thesis">{cred.thesis}</span>
                       ) : (
                         <span className="cred-na">—</span>
                       )}

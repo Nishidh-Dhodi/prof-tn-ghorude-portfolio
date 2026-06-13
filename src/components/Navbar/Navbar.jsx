@@ -164,7 +164,9 @@ export default function Navbar({ theme, onToggle }) {
       >
         <div className="mobile-drawer-header">
           <div className="navbar-brand" style={{ cursor: 'default' }}>
-            <div className="navbar-brand-icon" aria-hidden="true">TG</div>
+            <div className="navbar-brand-icon" aria-hidden="true">
+              {profileImage ? <img src={profileImage} alt="Profile" /> : "TG"}
+            </div>
             <div className="navbar-brand-text">
               <span className="navbar-brand-name">Dr. T. N. Ghorude</span>
               <span className="navbar-brand-title">Principal</span>

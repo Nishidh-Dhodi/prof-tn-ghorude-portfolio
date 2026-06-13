@@ -69,14 +69,14 @@ export default function ResearchProjectsPage() {
                         <FlaskConical size={14} />
                         <span>{proj.fundedBy}</span>
                       </div>
-                      <div className="rp-meta-item">
+                      {/* <div className="rp-meta-item">
                         <DollarSign size={14} />
                         <span>{proj.amount}</span>
                       </div>
                       <div className="rp-meta-item">
                         <Calendar size={14} />
                         <span>{proj.duration}</span>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 ))}
@@ -108,14 +108,14 @@ export default function ResearchProjectsPage() {
                     <FlaskConical size={14} />
                     <span>{proj.fundedBy}</span>
                   </div>
-                  <div className="rp-meta-item">
+                  {/* <div className="rp-meta-item">
                     <DollarSign size={14} />
                     <span>{proj.amount}</span>
                   </div>
                   <div className="rp-meta-item">
                     <Calendar size={14} />
                     <span>{proj.duration}</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}

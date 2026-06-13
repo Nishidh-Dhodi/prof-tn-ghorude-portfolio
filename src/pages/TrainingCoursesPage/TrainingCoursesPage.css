@@ -61,11 +61,25 @@
   letter-spacing: 0.04em;
 }
 
-.tc-badge-blue   { background: rgba(90,156,248,0.1);  color: var(--clr-accent);   border: 1px solid rgba(90,156,248,0.2); }
+/* .tc-badge-blue   { background: rgba(90,156,248,0.1);  color: var(--clr-accent);   border: 1px solid rgba(90,156,248,0.2); }
 .tc-badge-teal   { background: rgba(0,212,170,0.08);  color: var(--clr-teal);     border: 1px solid rgba(0,212,170,0.2); }
 .tc-badge-purple { background: rgba(139,109,253,0.1); color: var(--clr-accent-2); border: 1px solid rgba(139,109,253,0.2); }
 .tc-badge-gold   { background: rgba(240,180,41,0.1);  color: var(--clr-gold);     border: 1px solid rgba(240,180,41,0.2); }
-.tc-badge-default{ background: rgba(90,156,248,0.06); color: var(--clr-text-muted); border: 1px solid var(--clr-border); }
+.tc-badge-default{ background: rgba(90,156,248,0.06); color: var(--clr-text-muted); border: 1px solid var(--clr-border); } */
+
+/* Existing Badges */
+.tc-badge-blue    { background: rgba(90,156,248,0.1);   color: var(--clr-accent);         border: 1px solid rgba(90,156,248,0.2); }
+.tc-badge-teal    { background: rgba(0,212,170,0.08);   color: var(--clr-teal);           border: 1px solid rgba(0,212,170,0.2); }
+.tc-badge-purple  { background: rgba(139,109,253,0.1);  color: var(--clr-accent-2);       border: 1px solid rgba(139,109,253,0.2); }
+.tc-badge-gold    { background: rgba(240,180,41,0.1);   color: var(--clr-gold);           border: 1px solid rgba(240,180,41,0.2); }
+.tc-badge-default { background: rgba(100, 116, 139, 0.1); color: var(--clr-slate, #64748b); border: 1px solid rgba(100, 116, 139, 0.2);}
+
+/* New Badges (Awareness Program, Webinar, Seminar, Interview Panel) */
+.tc-badge-orange  { background: rgba(249,115,22,0.1);   color: var(--clr-orange, #f97316);  border: 1px solid rgba(249,115,22,0.2); }
+.tc-badge-indigo  { background: rgba(99,102,241,0.1);   color: var(--clr-indigo, #6366f1);  border: 1px solid rgba(99,102,241,0.2); }
+.tc-badge-rose    { background: rgba(244,63,94,0.1);    color: var(--clr-rose, #f43f5e);    border: 1px solid rgba(244,63,94,0.2); }
+.tc-badge-emerald { background: rgba(16,185,129,0.1);   color: var(--clr-emerald, #10b981); border: 1px solid rgba(16,185,129,0.2); }
+.tc-badge-pink { background: rgba(236,72,153,0.1);   color: var(--clr-pink, #ec4899);    border: 1px solid rgba(236,72,153,0.2); }
 
 .tc-year {
   display: inline-flex;

@@ -3,11 +3,21 @@ import { TRAINING_COURSES } from '../../data/portfolioData';
 import './TrainingCoursesPage.css';
 
 const TYPE_COLORS = {
-  'Refresher Course':    { cls: 'tc-badge-blue',   bg: 'tc-card-blue' },
-  'Orientation Programme':{ cls: 'tc-badge-teal',  bg: 'tc-card-teal' },
-  'FDP':                 { cls: 'tc-badge-purple', bg: 'tc-card-purple' },
-  'Workshop':            { cls: 'tc-badge-gold',   bg: 'tc-card-gold' },
-  'Conference':          { cls: 'tc-badge-default',bg: 'tc-card-default' },
+  // 'Refresher Course':    { cls: 'tc-badge-blue',   bg: 'tc-card-blue' },
+  // 'Workshop':            { cls: 'tc-badge-gold',   bg: 'tc-card-gold' },
+  // 'Short term course':{ cls: 'tc-badge-teal',  bg: 'tc-card-teal' },
+  // 'E-workshop': { cls: 'tc-badge-purple', bg: 'tc-card-purple' },
+  // 'Conference':          { cls: 'tc-badge-default',bg: 'tc-card-default' },
+  'Refresher Course':  { cls: 'tc-badge-blue',    bg: 'tc-card-blue' },
+  'Workshop':          { cls: 'tc-badge-gold',    bg: 'tc-card-gold' },
+  'Short term course': { cls: 'tc-badge-teal',    bg: 'tc-card-teal' },
+  'E-workshop':        { cls: 'tc-badge-purple',  bg: 'tc-card-purple' },
+  'Conference':        { cls: 'tc-badge-default', bg: 'tc-card-default' },
+  'Awareness Program': { cls: 'tc-badge-orange',  bg: 'tc-card-orange' },
+  'Webinar':           { cls: 'tc-badge-indigo',  bg: 'tc-card-indigo' },
+  'Seminar':           { cls: 'tc-badge-rose',    bg: 'tc-card-rose' },
+  'Interview Panel':   { cls: 'tc-badge-emerald', bg: 'tc-card-emerald' },
+  'Symposium': { cls: 'tc-badge-pink', bg: 'tc-card-pink' },
 };
 
 export default function TrainingCoursesPage() {
@@ -55,10 +65,10 @@ export default function TrainingCoursesPage() {
                       <BookOpen size={13} />
                       <span>{course.organizer}</span>
                     </div>
-                    <div className="tc-meta-item">
+                    {/* <div className="tc-meta-item">
                       <Award size={13} />
                       <span>Duration: {course.duration}</span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               );

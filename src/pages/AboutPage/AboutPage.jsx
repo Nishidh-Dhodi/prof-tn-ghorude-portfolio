@@ -38,7 +38,7 @@ export default function AboutPage() {
             Ex-Principal & HOD of Dept. of Physics N.B.Mehta Science College, Bordi
           </p>
           <p>
-            Chairman - Board of study (Physics) Univercity of Mumbai
+            Chairman - Board of study (Physics) University of Mumbai
           </p>
         </div>
       </section>
