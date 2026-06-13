@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { PROFESSOR, CONTACT_DETAILS } from "../../data/portfolioData";
 import "./ContactPage.css";
+import profileImage from "../../assets/Prof-Dr-T-N-profile.jpg";
 
 /* ── Social icon resolver using clean inline SVGs ─────────────────── */
 const SOCIAL_ICONS = {
@@ -119,7 +120,9 @@ export default function ContactPage() {
             <aside className="contact-info-panel">
               {/* ── Profile identity card ── */}
               <div className="cip-identity">
-                <div className="cip-avatar">TG</div>
+                <div className="cip-avatar">
+                  {profileImage ? <img src={profileImage} alt="Profile" /> : 'TG'}
+                </div>
                 <div>
                   <div className="cip-name">{PROFESSOR.name}</div>
                   <div className="cip-role">{PROFESSOR.title}</div>

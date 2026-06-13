@@ -9,11 +9,11 @@ export const PROFESSOR = {
   title: "Principal",
   department: "Administration",
   institution: "Dnyandeep Mandal's St. Joseph College of Arts and Commerce",
-  email: "thghorude@gmail.come",
+  email: "tnghorude@gmail.com",
   tagline: "A Dedicated Educator, Researcher & Administrator in Physics",
   intro:
     "Prof. Dr. T. N. Ghorude is an accomplished academician and researcher with over three decades of dedicated service in Physics education and research. He currently serves as Principal at Dnyandeep Mandal's St. Joseph College of Arts and Commerce, Satpala, Rajodi Road, Virar (West), affiliated to the University of Mumbai.",
-  bio: "Prof. Dr. T. N. Ghorude holds a Ph.D. in Physics and has more than 32 years of teaching experience at undergraduate and post-graduate levels. His primary research areas include Polymer Composites, Gas Sensors, Nanocomposites, Polypyrrole-based materials, and Colorimetry. He has successfully supervised seven Ph.D. scholars and has over 20 research publications in reputed national and international journals. He has also contributed to numerous minor and major research projects funded by agencies such as BCUD (University of Mumbai) and UGC. He has attended several national and international conferences, Faculty Development Programs, and Refresher Courses throughout his distinguished career.",
+  bio: "Prof. Dr. T. N. Ghorude holds a Ph.D. in Physics and has more than 32 years of teaching experience at undergraduate and post-graduate levels. His primary research areas include Polymer Composites, Gas Sensors, Nanocomposites, Polypyrrole-based materials, and Colorimetry. He has successfully supervised seven Ph.D. scholars and has over 50 research publications in reputed national and international journals. He has also contributed to numerous minor and major research projects funded by agencies such as BCUD (University of Mumbai) and UGC. He has attended several national and international conferences, Faculty Development Programs, and Refresher Courses throughout his distinguished career.",
   promoBanner: "Admissions Open for Physics Honours! New batch starting soon.",
   promoLink: "/contact",
   promoLinkText: "Register Now",
@@ -101,14 +101,14 @@ export const ACADEMIC_CREDENTIALS = [
   {
     id: "cred-1",
     degree: "B.Sc. (Physics)",
-    university: "Gulbarga Univercity, Gulbarga",
+    university: "Gulbarga University, Gulbarga",
     year: "1988",
     grade: "",
   },
   {
     id: "cred-2",
     degree: "M.Sc. (Physics)",
-    university: "Gulbarga Univercity, Gulbarga",
+    university: "Gulbarga University, Gulbarga",
     year: "1991",
     grade: "",
   },
@@ -1368,19 +1368,19 @@ export const GALLERY_IMAGES = [
   {
     id: "bc1",
     category: "book-cover",
-    src: "/images/book-cover/book-cover-1.png",
+    src: "/images/book-cover/book-cover-1.jpg",
     alt: "Book Cover 1",
   },
   {
     id: "bc2",
     category: "book-cover",
-    src: "/images/book-cover/book-cover-2.png",
+    src: "/images/book-cover/book-cover-2.jpg",
     alt: "Book Cover 2",
   },
   {
     id: "bc3",
     category: "book-cover",
-    src: "/images/book-cover/book-cover-3.png",
+    src: "/images/book-cover/book-cover-3.jpg",
     alt: "Book Cover 3",
   },
   {
@@ -1394,6 +1394,54 @@ export const GALLERY_IMAGES = [
     category: "book-cover",
     src: "/images/book-cover/book-cover-5.png",
     alt: "Book Cover 5",
+  },
+  {
+    id: "bc6",
+    category: "book-cover",
+    src: "/images/book-cover/book-cover-6.png",
+    alt: "Book Cover 6",
+  },
+  {
+    id: "bc7",
+    category: "book-cover",
+    src: "/images/book-cover/book-cover-7.png",
+    alt: "Book Cover 7",
+  },
+  {
+    id: "bc8",
+    category: "book-cover",
+    src: "/images/book-cover/book-cover-8.png",
+    alt: "Book Cover 8",
+  },
+  {
+    id: "bc9",
+    category: "book-cover",
+    src: "/images/book-cover/book-cover-9.png",
+    alt: "Book Cover 9",
+  },
+  {
+    id: "bc10",
+    category: "book-cover",
+    src: "/images/book-cover/book-cover-10.png",
+    alt: "Book Cover 10",
+  },
+  {
+    id: "bc11",
+    category: "book-cover",
+    src: "/images/book-cover/book-cover-11.png",
+    alt: "Book Cover 11",
+  },
+  {
+    id: "bc12",
+    category: "book-cover",
+    src: "/images/book-cover/book-cover-12.png",
+    alt: "Book Cover 12",
+  },
+  {
+    id: "bc13",
+    category: "book-cover",
+    src: "/images/book-cover/book-cover-13.png",
+    alt: "Book Cover 13",
   },
 
   // ── Events ──────────────────────────────────────────────────

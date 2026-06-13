@@ -5,11 +5,9 @@
 
 /* ── Promo Banner ────────────────────────────────────────────── */
 .promo-banner {
-  background: linear-gradient(
-    90deg,
-    var(--clr-bg-elevated) 0%,
-    var(--clr-bg-card-2) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--clr-bg-elevated) 0%,
+      var(--clr-bg-card-2) 100%);
   border-bottom: 1px solid var(--clr-border);
   padding: 0.55rem var(--space-xl);
   display: flex;
@@ -52,11 +50,9 @@
   width: 700px;
   height: 700px;
   border-radius: 50%;
-  background: radial-gradient(
-    ellipse,
-    rgba(90, 156, 248, 0.12) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse,
+      rgba(90, 156, 248, 0.12) 0%,
+      transparent 70%);
   pointer-events: none;
 }
 
@@ -91,6 +87,7 @@
 }
 
 .hero-title {
+  --clr-heading: #312E81;
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -157,11 +154,9 @@
   position: absolute;
   inset: -40px;
   border-radius: 50%;
-  background: radial-gradient(
-    ellipse,
-    rgba(90, 156, 248, 0.18) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse,
+      rgba(90, 156, 248, 0.18) 0%,
+      transparent 70%);
   animation: float 6s ease infinite;
 }
 
@@ -266,11 +261,9 @@
 }
 
 .about-highlight-box {
-  background: linear-gradient(
-    135deg,
-    rgba(90, 156, 248, 0.08) 0%,
-    rgba(139, 109, 253, 0.06) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(90, 156, 248, 0.08) 0%,
+      rgba(139, 109, 253, 0.06) 100%);
   border: 1px solid rgba(90, 156, 248, 0.18);
   border-left: 3px solid var(--clr-accent);
   border-radius: var(--radius-md);
@@ -325,11 +318,9 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(90, 156, 248, 0.05) 0%,
-    transparent 60%
-  );
+  background: linear-gradient(135deg,
+      rgba(90, 156, 248, 0.05) 0%,
+      transparent 60%);
   opacity: 0;
   transition: var(--transition-base);
 }
@@ -556,11 +547,9 @@
 }
 
 .cta-box {
-  background: linear-gradient(
-    135deg,
-    var(--clr-bg-card) 0%,
-    var(--clr-bg-elevated) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--clr-bg-card) 0%,
+      var(--clr-bg-elevated) 100%);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-xl);
   padding: var(--space-4xl);
@@ -579,11 +568,9 @@
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(
-    ellipse,
-    rgba(90, 156, 248, 0.08) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse,
+      rgba(90, 156, 248, 0.08) 0%,
+      transparent 70%);
   pointer-events: none;
 }
 
@@ -592,7 +579,7 @@
   margin-bottom: var(--space-md);
 }
 
-.cta-box > p {
+.cta-box>p {
   max-width: 540px;
   margin-inline: auto;
   margin-bottom: var(--space-2xl);
