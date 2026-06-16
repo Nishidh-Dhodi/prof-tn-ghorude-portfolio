@@ -7,7 +7,7 @@ import {
   PROFESSOR, KEY_STATS, RESEARCH_AREAS, PHD_SCHOLARS, JOURNAL_PUBLICATIONS
 } from '../../data/portfolioData';
 import './HomePage.css';
-import profileImage from "../../assets/Prof-Dr-T-N.png";
+import profileImage from "../../assets/Prof-Dr-T-N-profile.jpg";
 
 // Atom icon map for research areas
 const AREA_ICONS = [

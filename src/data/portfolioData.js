@@ -1563,6 +1563,12 @@ export const GALLERY_IMAGES = [
     src: "/images/photo/photo-3.png",
     alt: "Prof. Ghorude Photo 3",
   },
+   {
+    id: "ph4",
+    category: "photo",
+    src: "/images/photo/photo-4.jpg",
+    alt: "Prof. Ghorude Photo 4",
+  },
 ];
 
 // ── Gallery Categories (aligned to public/images sub-folders) ─
