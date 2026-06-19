@@ -21,8 +21,8 @@ export const PROFESSOR = {
 
 // ── Contact Details ───────────────────────────────────────────
 export const CONTACT_DETAILS = {
-  email: "thghorude@gmail.come",
-  emailHref: "mailto:thghorude@gmail.come",
+  email: "tnghorude@gmail.com",
+  emailHref: "mailto:tnghorude@gmail.com",
   tagline:
     "Feel free to reach out for research collaborations, academic queries, or Ph.D. guidance.",
   phone: "+91-22-XXXXXXXX",
@@ -865,8 +865,7 @@ export const CAREER_TIMELINE = [
     title: "Lecturer in Physics",
     institution: "N. B. Mehta Science College, Bordi",
     role: "Lecturer",
-    description:
-      "",
+    description: "",
     type: "fulltime",
     color: "teal",
   },
@@ -876,8 +875,7 @@ export const CAREER_TIMELINE = [
     title: "Vice-Principal & Head of Deptt. of Physics",
     institution: "N. B. Mehta Science College, Bordi",
     role: "Vice-Principal & Head of Deptt. of Physics",
-    description:
-      "",
+    description: "",
     type: "fulltime",
     color: "gold",
   },
@@ -887,8 +885,7 @@ export const CAREER_TIMELINE = [
     title: "Ph.D. Awarded in Physics",
     institution: "University of Mumbai",
     role: "Ph.D. Guide",
-    description:
-      "",
+    description: "",
     type: "milestone",
     color: "purple",
   },
@@ -899,8 +896,7 @@ export const CAREER_TIMELINE = [
     institution:
       "Dnyandeep Mandal's St. Joseph College of Arts and Commerce, Virar (West)",
     role: "Principal",
-    description:
-      "",
+    description: "",
     type: "current",
     color: "teal",
   },
@@ -968,10 +964,11 @@ export const INSTITUTIONAL_ROLES = [
 
 // ── Training Courses & Professional Development ───────────────
 export const TRAINING_COURSES = [
-{
+  {
     id: "tc1",
     title: "RESEARCH METHODOLOGY and DATA ANALYSIS",
-    organizer: "Ramanujan College, University of Delhi under the aegis of Ministry of Education",
+    organizer:
+      "Ramanujan College, University of Delhi under the aegis of Ministry of Education",
     duration: "14 days",
     year: "2021",
     type: "Refresher Course",
@@ -995,7 +992,8 @@ export const TRAINING_COURSES = [
   {
     id: "tc4",
     title: "SAFETY AND HYGIENE IN (CYBER) WORLD",
-    organizer: "Ramanujan College, University of Delhi under the aegis of Ministry of Education",
+    organizer:
+      "Ramanujan College, University of Delhi under the aegis of Ministry of Education",
     duration: "7 days",
     year: "2021",
     type: "Short term course",
@@ -1011,14 +1009,16 @@ export const TRAINING_COURSES = [
   {
     id: "tc6",
     title: "19-NEP 2020 Orientation Sensitization Programme (DEC-A)",
-    organizer: "Malviya Mission Teacher Training Programme (MM-TTP) of UGC organized by BAMU, Chatrapati Sambhaji Nagar",
+    organizer:
+      "Malviya Mission Teacher Training Programme (MM-TTP) of UGC organized by BAMU, Chatrapati Sambhaji Nagar",
     duration: "9 days",
     year: "2024",
     type: "Short term course",
   },
   {
     id: "tc7",
-    title: "Orienting towards NEP 2020 compliant syllabus & curriculum (Resource Person)",
+    title:
+      "Orienting towards NEP 2020 compliant syllabus & curriculum (Resource Person)",
     organizer: "Sathaye College, Vile Parle",
     duration: "1 day",
     year: "2024",
@@ -1027,7 +1027,8 @@ export const TRAINING_COURSES = [
   {
     id: "tc8",
     title: "Scientific communication for researchers",
-    organizer: "Research and Development centre, BMS engineering college, BANGALORE",
+    organizer:
+      "Research and Development centre, BMS engineering college, BANGALORE",
     duration: "5 days",
     year: "2023",
     type: "E-workshop",
@@ -1123,7 +1124,8 @@ export const TRAINING_COURSES = [
   {
     id: "tc20",
     title: "Sustainable development A green approach",
-    organizer: "Thakur college Kandivali, & University of Mumbai, supported by ABARD",
+    organizer:
+      "Thakur college Kandivali, & University of Mumbai, supported by ABARD",
     duration: "1 day",
     year: "2021",
     type: "Conference",
@@ -1138,7 +1140,8 @@ export const TRAINING_COURSES = [
   },
   {
     id: "tc22",
-    title: "XRD Instrumentation, Analysis, Interpretation of spectra and applications",
+    title:
+      "XRD Instrumentation, Analysis, Interpretation of spectra and applications",
     organizer: "Birla college",
     duration: "1 day",
     year: "2021",
@@ -1154,15 +1157,18 @@ export const TRAINING_COURSES = [
   },
   {
     id: "tc24",
-    title: "Career Advancement Scheme and writing skills of review of literature and framing the objectives and hypotheses",
-    organizer: "G. E. Society's Arts, commerce and Science college, Shreewardhan",
+    title:
+      "Career Advancement Scheme and writing skills of review of literature and framing the objectives and hypotheses",
+    organizer:
+      "G. E. Society's Arts, commerce and Science college, Shreewardhan",
     duration: "2 days",
     year: "2021",
     type: "Webinar",
   },
   {
     id: "tc25",
-    title: "National Education policy 2020 it's implementation in Higher education",
+    title:
+      "National Education policy 2020 it's implementation in Higher education",
     organizer: "Nagin das khandwala college Mumbai",
     duration: "1 day",
     year: "2021",
@@ -1219,7 +1225,8 @@ export const TRAINING_COURSES = [
   {
     id: "tc32",
     title: "Device grade material development using ion Beam",
-    organizer: "Nuclear Science Centre, New Delhi and Dept. of Physics University of Mumbai",
+    organizer:
+      "Nuclear Science Centre, New Delhi and Dept. of Physics University of Mumbai",
     duration: "2 days",
     year: "2003",
     type: "Workshop",
@@ -1243,7 +1250,8 @@ export const TRAINING_COURSES = [
   {
     id: "tc35",
     title: "Project management Using MS project tool",
-    organizer: "SRG consultant and Dept. of Electronic Science University of Pune",
+    organizer:
+      "SRG consultant and Dept. of Electronic Science University of Pune",
     duration: "2 days",
     year: "2008",
     type: "Workshop",
@@ -1298,7 +1306,8 @@ export const TRAINING_COURSES = [
   },
   {
     id: "tc42",
-    title: "International Physics Conference (ICANN 2019-20) (Advisory Committee & Chairperson)",
+    title:
+      "International Physics Conference (ICANN 2019-20) (Advisory Committee & Chairperson)",
     organizer: "S.D.S.M's college Palghar",
     duration: "3 days",
     year: "2019",
@@ -1307,15 +1316,18 @@ export const TRAINING_COURSES = [
   {
     id: "tc43",
     title: "Path to Scientific Research (Convener)",
-    organizer: "We Mentor Research (WeMR) at N. B. Mehta (Valwada) Science College, BORDI",
+    organizer:
+      "We Mentor Research (WeMR) at N. B. Mehta (Valwada) Science College, BORDI",
     duration: "1 day",
     year: "2024",
     type: "Seminar",
   },
   {
     id: "tc44",
-    title: "National Conference on Management and Technology (NCMAT) (Chairperson)",
-    organizer: "Deccan Education Societys Navinchandra Mehta Institute of Technology and Development, DADAR",
+    title:
+      "National Conference on Management and Technology (NCMAT) (Chairperson)",
+    organizer:
+      "Deccan Education Societys Navinchandra Mehta Institute of Technology and Development, DADAR",
     duration: "1 day",
     year: "2024",
     type: "Conference",
@@ -1323,11 +1335,12 @@ export const TRAINING_COURSES = [
   {
     id: "tc45",
     title: "Writing skills for resume Building (Convener)",
-    organizer: "We Mentor Research (WeMR) at N. B. Mehta (Valwada) Science College, BORDI",
+    organizer:
+      "We Mentor Research (WeMR) at N. B. Mehta (Valwada) Science College, BORDI",
     duration: "1 day",
     year: "2024",
     type: "Workshop",
-  }
+  },
 ];
 
 // ── Gallery Images (paths start with / — never include "public") ─
@@ -1557,13 +1570,13 @@ export const GALLERY_IMAGES = [
     src: "/images/photo/photo-2.jpeg",
     alt: "Prof. Ghorude Photo 2",
   },
-   {
+  {
     id: "ph3",
     category: "photo",
     src: "/images/photo/photo-3.png",
     alt: "Prof. Ghorude Photo 3",
   },
-   {
+  {
     id: "ph4",
     category: "photo",
     src: "/images/photo/photo-4.jpg",
@@ -1579,7 +1592,7 @@ export const GALLERY_CATEGORIES = [
     label: "Awards & Recognitions",
     description:
       "Felicitations, trophies, and recognition ceremonies honoring research and academic contributions.",
-    count: GALLERY_IMAGES.filter(img=>img.category==="award").length,
+    count: GALLERY_IMAGES.filter((img) => img.category === "award").length,
   },
   {
     id: "book-cover",
@@ -1587,7 +1600,7 @@ export const GALLERY_CATEGORIES = [
     label: "Book Covers",
     description:
       "Published books, reference materials, and academic volumes authored or co-authored.",
-    count: GALLERY_IMAGES.filter(img=>img.category==="book-cover").length,
+    count: GALLERY_IMAGES.filter((img) => img.category === "book-cover").length,
   },
   {
     id: "event",
@@ -1595,14 +1608,14 @@ export const GALLERY_CATEGORIES = [
     label: "Events & Conferences",
     description:
       "National and international seminars, conferences, and institutional events.",
-    count: GALLERY_IMAGES.filter(img=>img.category==="event").length,
+    count: GALLERY_IMAGES.filter((img) => img.category === "event").length,
   },
   {
     id: "news-paper",
     folderKey: "news-paper",
     label: "News & Press",
     description: "Media coverage, newspaper features, and press clippings.",
-    count: GALLERY_IMAGES.filter(img=>img.category==="news-paper").length,
+    count: GALLERY_IMAGES.filter((img) => img.category === "news-paper").length,
   },
   {
     id: "photo",
@@ -1610,10 +1623,9 @@ export const GALLERY_CATEGORIES = [
     label: "Photos",
     description:
       "Personal and professional photographs from academic and research milestones.",
-    count: GALLERY_IMAGES.filter(img=>img.category==="photo").length,
+    count: GALLERY_IMAGES.filter((img) => img.category === "photo").length,
   },
 ];
-
 
 // ── Key Stats for Hero ────────────────────────────────────────
 export const KEY_STATS = [
