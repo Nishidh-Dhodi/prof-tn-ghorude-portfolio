@@ -792,6 +792,15 @@ export const PATENTS = [
     status: "Published",
     inventors: "Ghorude T. N., Tandel R. P.",
   },
+  {
+    id: "p3",
+    title:
+      "Solar Powered Electric Vehicles Charging Station",
+    applicationNo: "6347XXXXXX",
+    filedDate: "2024",
+    status: "Published",
+    inventors: "Ghorude T. N.",
+  },
 ];
 
 // ── Research Projects ─────────────────────────────────────────
